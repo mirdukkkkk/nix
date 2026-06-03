@@ -8,7 +8,6 @@
             extensions = with pkgs.vscode-extensions; [
                 prisma.prisma
                 esbenp.prettier-vscode
-                wakatime.vscode-wakatime
                 svelte.svelte-vscode
                 catppuccin.catppuccin-vsc
                 catppuccin.catppuccin-vsc-icons
@@ -23,8 +22,6 @@
 
             userSettings = {
                 "telemetry.telemetryLevel" = "off";
-
-                "wakatime.apiKey" = "waka_c9ba47d9-fbe6-4c4a-af73-616c29943fd3";
 
                 "workbench.iconTheme" = "catppuccin-macchiato";
                 "workbench.colorTheme" = "Catppuccin Macchiato";
