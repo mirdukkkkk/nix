@@ -1,4 +1,5 @@
 {
     i18n.defaultLocale = "en_US.UTF-8";
-    time.timeZone = "Pacific/Auckland";
+    #time.timeZone = "Pacific/Auckland";
+    time.timeZone = "Europe/Moscow";
 }

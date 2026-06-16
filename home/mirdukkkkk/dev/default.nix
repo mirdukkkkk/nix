@@ -10,5 +10,7 @@
     home.packages = with pkgs; [
         mongodb-compass
         sqlitebrowser
+
+        buf
     ];
 }

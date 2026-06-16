@@ -30,6 +30,8 @@ in
 
     programs.firefox = {
         enable = true;
+        package = pkgs.unstable.firefox;
+
         configPath = ".mozilla/firefox";
         profiles.mrdk = {
             isDefault = true;

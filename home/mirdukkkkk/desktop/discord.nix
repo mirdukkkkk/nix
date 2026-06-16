@@ -1,18 +1,14 @@
 { pkgs, inputs, ... }:
 let
-    flameflag = import inputs.flameflag {
-        system = pkgs.stdenv.hostPlatform.system;
-        config.allowUnfree = true;
+    discork-vk = import inputs.discord-vk {
+        system = pkgs.system;
+        config = pkgs.config;
     };
 in
 {
     programs.discord = {
         enable = true;
-        package = flameflag.discord.override {
-            #withOpenASAR = true;
-            withKrisp = true;
-            withTTS = false;
-        };
+        package = discork-vk.discord;
 
         settings = {
             DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING = true;

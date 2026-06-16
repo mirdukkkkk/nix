@@ -1,7 +1,15 @@
-{ self, ... }:
+{ self, inputs, ... }:
 {
     nixpkgs = {
         config.allowUnfree = true;
-        overlays = builtins.attrValues self.overlays;
+        overlays = [
+            inputs.nix-cachyos-kernel.overlays.default
+            (final: prev: {
+                unstable = import inputs.nixpkgs-unstable {
+                    system = prev.system;
+                    config = prev.config;
+                };
+            })
+        ];
     };
 }

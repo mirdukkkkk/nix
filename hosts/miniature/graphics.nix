@@ -5,10 +5,10 @@
             enable32Bit = true;
         };
 
-        amdgpu = {
-            initrd.enable = true;
-            overdrive.enable = false;
-        };
+        #amdgpu = {
+        #    initrd.enable = true;
+        #    overdrive.enable = false;
+        #};
     };
 
     #environment.variables = {

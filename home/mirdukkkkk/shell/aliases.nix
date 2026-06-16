@@ -1,8 +1,7 @@
+{ pkgs, ... }:
 {
-    programs.zsh.shellAliases = {
-        ls = "eza --icons";
-        ll = "eza -lh --icons --git";
-        tree = "eza --tree --icons";
+    home.shellAliases = {
+        tree = "eza --tree";
 
         cat = "bat";
 
@@ -19,7 +18,14 @@
 
         nopt = "sudo nix store optimise";
         nclean = "sudo nix-collect-garbage -d";
-
-        fastfetch = "hyfetch";
     };
+
+    home.packages = with pkgs; [
+        bat
+        #ripgrep
+        #fd
+        duf
+        dust
+        bottom
+    ];
 }

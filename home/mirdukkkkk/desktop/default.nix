@@ -5,16 +5,18 @@
 
         ./discord.nix
         ./easyeffects.nix
+        ./flameshot.nix
         ./kitty.nix
+        ./mangohud.nix
+        ./obs.nix
         ./psd.nix
         ./spotify.nix
         ./vscode.nix
     ];
 
     home.packages = with pkgs; [
-        telegram-desktop
+        unstable.telegram-desktop
         pear-desktop
-        obs-studio
         qbittorrent
 
         aseprite
@@ -23,6 +25,6 @@
 
         google-chrome
 
-        #inputs.iloader.packages.${pkgs.stdenv.hostPlatform.system}.default
+        inputs.iloader.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 }

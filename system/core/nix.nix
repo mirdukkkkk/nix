@@ -2,8 +2,9 @@
     nix = {
         settings = {
             max-jobs = "auto";
-            auto-optimise-store = false;
+            auto-optimise-store = true;
             experimental-features = [ "nix-command" "flakes" ];
+
             #trusted-users = [ "root" "mirdukkkkk" ];
         };
 

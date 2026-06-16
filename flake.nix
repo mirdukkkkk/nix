@@ -3,13 +3,16 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+        nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
         nur.url = "github:nix-community/nur";
         home-manager = {
             url = "github:nix-community/home-manager/release-26.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        flameflag.url = "github:flameflag/nixpkgs/90cdc6283e794e7e276fa60f6d27b98a27454f15";
+        nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/3d940a534da0ba6bce60e345ff2c9c7b062087fb";
+        discord-vk.url = "github:luckshiba/nixpkgs/discord-vk";
+
         iloader = {
             url = "github:mirdukkkkk/iloader";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -18,8 +21,6 @@
 
     outputs = { self, nixpkgs, nur, home-manager, ... } @ inputs:
     {
-        overlays = import ./overlays;
-
         nixosConfigurations.miniature = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit inputs self; };
