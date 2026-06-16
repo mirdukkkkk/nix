@@ -2,6 +2,6 @@
     imports = [
         ./boot.nix
         ./sysctl.nix
-        ./xanmod.nix
+        ./kernel.nix
     ];
 }

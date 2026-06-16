@@ -1,9 +1,20 @@
 { pkgs, config, ... }:
+let
+    kernel = pkgs.cachyosKernels.linux-cachyos-latest-x86_64-v2.override {
+        # https://github.com/CachyOS/linux/releases/download/cachyos-7.0.11-1/cachyos-7.0.11-1.tar.gz
+
+        cpusched = "eevdf";
+        lto = "none";
+        hzTicks = "1000";
+        bbr3 = true;
+        hugepage = "madvise";
+    };
+in
 {
-    boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    boot.kernelPackages = pkgs.linuxKernel.packagesFor kernel;
 
     boot.kernelModules = [ "ntsync" ];
-    boot.extraModulePackages = with config.boot.kernelPackages; [ bcachefs ];
+    #boot.extraModulePackages = with config.boot.kernelPackages; [ bcachefs ];
     /*boot.kernelPackages = pkgs.linuxPackagesFor(pkgs.linuxKernel.kernels.linux_xanmod_latest.override {
         argsOverride = rec {
             src = pkgs.fetchurl {

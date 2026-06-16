@@ -27,6 +27,9 @@
                 "workbench.colorTheme" = "Catppuccin Macchiato";
                 "workbench.activityBar.location" = "top";
 
+                "git.autofetch" = true;
+                "git.confirmSync" = false;
+
                 "editor.cursorBlinking" = "smooth";
                 "editor.defaultFormatter" = "esbenp.prettier-vscode";
                 "editor.formatOnPaste" = true;
@@ -34,6 +37,10 @@
                 "editor.smoothScrolling" = true;
                 "editor.stickyScroll.enabled" = false;
                 "editor.stickyScroll.scrollWithEditor" = false;
+
+                "files.autoSave" = "onFocusChange";
+                "files.insertFinalNewline" = true;
+                "files.trimTrailingWhitespace" = true;
 
                 "window.titleBarStyle" = "custom";
 

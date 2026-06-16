@@ -16,10 +16,10 @@
         "net.ipv4.conf.all.route_localnet" = 1;
         "net.ipv6.conf.all.forwarding" = 1;
 
-        "vm.swappiness" = 60;
+        "vm.swappiness" = 50;
         "vm.watermark_boost_factor" = 0;
-        "vm.watermark_scale_factor" = 200;
-        "vm.page-cluster" = 2;
+        "vm.watermark_scale_factor" = 50;
+        "vm.page-cluster" = 0;
         "vm.vfs_cache_pressure" = 75;
 
         "vm.dirty_background_ratio" = 5;

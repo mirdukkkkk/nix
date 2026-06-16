@@ -7,7 +7,9 @@
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
         aurorae
+        spectacle
         konsole
+        kwin-x11
         elisa
         okular
         khelpcenter
@@ -15,15 +17,9 @@
     ];
 
     environment.systemPackages = with pkgs.kdePackages; [
-        #dolphin
         qtsvg
         filelight
-        #ark
-        #spectacle
-        #gwenview
-        #kate
         kolourpaint
         kdenlive
-        #sddm-kcm
     ];
 }

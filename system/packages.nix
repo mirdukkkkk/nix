@@ -7,11 +7,27 @@
 
         wireshark
         compsize
-        gparted
         vlc
 
         hunspell
 
-        libreoffice
+        libreoffice-qt
+        #(pkgs.libreoffice.override {
+        #    unwrapped = pkgs.libreoffice.unwrapped.override {
+        #        withJava = false;
+        #        kdeIntegration = true;
+        #    };
+        #})
+
+        gparted
+        e2fsprogs
+        ntfs3g
+        exfat
+        smartmontools
+
+        rar
+        unrar
+        zip
+        unzip
     ];
 }
