@@ -13,10 +13,8 @@
         nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/3d940a534da0ba6bce60e345ff2c9c7b062087fb";
         discord-vk.url = "github:luckshiba/nixpkgs/discord-vk";
 
-        iloader = {
-            url = "github:mirdukkkkk/iloader";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+        iloader.url = "github:mirdukkkkk/iloader";
+        beefetch.url = "github:mirdukkkkk/beefetch";
     };
 
     outputs = { self, nixpkgs, nur, home-manager, ... } @ inputs:

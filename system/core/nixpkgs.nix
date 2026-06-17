@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ inputs, ... }:
 {
     nixpkgs = {
         config.allowUnfree = true;
@@ -9,6 +9,10 @@
                     system = prev.system;
                     config = prev.config;
                 };
+            })
+            (final: prev: {
+                beefetch = inputs.beefetch.packages.${prev.system}.default;
+                iloader = inputs.iloader.packages.${prev.stdenv.hostPlatform.system}.default;
             })
         ];
     };

@@ -3,6 +3,7 @@
     imports = [
         ./firefox
 
+        #./cream.nix
         ./discord.nix
         ./easyeffects.nix
         ./flameshot.nix
@@ -25,6 +26,6 @@
 
         google-chrome
 
-        inputs.iloader.packages.${pkgs.stdenv.hostPlatform.system}.default
+        iloader
     ];
 }
