@@ -1,4 +1,7 @@
+{ pkgs, ... }:
 {
+    home.packages = with pkgs; [ beefetch ];
+
     programs.fastfetch = {
         enable = true;
         settings = { };

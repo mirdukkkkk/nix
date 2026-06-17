@@ -26,7 +26,7 @@ let
     };
 in
 {
-    home.packages = [ rycee.mozilla-addons-to-nix ];
+    #home.packages = [ rycee.mozilla-addons-to-nix ];
 
     programs.firefox = {
         enable = true;
