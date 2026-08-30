@@ -1,3 +1,0 @@
-{
-    programs.corectrl.enable = true;
-}

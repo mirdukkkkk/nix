@@ -1,10 +1,22 @@
 {
     #boot.supportedFilesystems = [ "bcachefs" ];
 
+    #fileSystems."/" = {
+    #    device = "/dev/disk/by-uuid/aae3be35-04cf-4565-b5b0-394b76a7889d";
+    #    fsType = "btrfs";
+    #    options = [ "subvol=@" "noatime" "discard=async" "compress=zstd:3" ];
+    #};
+
     fileSystems."/" = {
+        fsType = "tmpfs";
+        options = [ "size=4G" "mode=755" ];
+    };
+
+    fileSystems."/persist" = {
         device = "/dev/disk/by-uuid/aae3be35-04cf-4565-b5b0-394b76a7889d";
         fsType = "btrfs";
-        options = [ "subvol=@" "noatime" "discard=async" "compress=zstd:3" ];
+        options = [ "subvol=@persist" "noatime" "discard=async" "compress=zstd:3" ];
+        neededForBoot = true;
     };
 
     fileSystems."/nix" = {
@@ -46,7 +58,7 @@
     ];
 
     fileSystems."/srv/nfs" = {
-        device = "192.168.1.1:/tmp/mnt/624f53e6-50f9-4a27-bf43-9ef316622601";
+        device = "192.168.1.144:/srv/nfs";
         fsType = "nfs";
         options = [ "_netdev" "rw" "hard" "vers=3" "nolock" "ac" "x-systemd.automount" ];
     };

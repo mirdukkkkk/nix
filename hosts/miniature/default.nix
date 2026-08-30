@@ -1,10 +1,14 @@
 {
     imports = [
+        ../../modules/nixos
+
+        ./boot.nix
         ./filesystems.nix
         ./graphics.nix
         ./hardware.nix
-
-        ../../system
+        ./network.nix
+        ./persistence.nix
+        ./profile.nix
     ];
 
     networking.hostName = "miniature";

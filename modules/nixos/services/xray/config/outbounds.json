@@ -1,0 +1,158 @@
+[
+    {
+      "tag": "proxy_dfsafsd",
+      "protocol": "vless",
+      "settings": {
+        "id": "fda0a1cb-a754-4752-bc0c-32f33394fccf",
+        "flow": "",
+        "port": 443,
+        "address": "89.125.105.27",
+        "encryption": "mlkem768x25519plus.native.0rtt.qc0TbjnPwb_zsxl10wxOudoHirEoIFFr4vJVAB7LvCg"
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "none",
+        "xhttpSettings": {
+          "mode": "stream-one",
+          "path": "/fluorescence",
+          "extra": {
+            "xPaddingBytes": "100-1000",
+            "xmux": {
+              "cMaxReuseTimes": 0,
+              "maxConcurrency": 0,
+              "maxConnections": "2",
+              "hKeepAlivePeriod": 0,
+              "hMaxRequestTimes": "600-900",
+              "hMaxReusableSecs": "1800-3000"
+            }
+          }
+        },
+        "sockopt": {
+          "mark": 255
+        }
+      }
+    },
+    {
+      "tag": "proxy",
+      "protocol": "vless",
+      "settings": {
+        "address": "195.58.49.232",
+        "port": 443,
+        "id": "f3a06ffe-0173-40b8-b9dc-64ea7d2e554d",
+        "encryption": "none",
+        "flow": ""
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "xhttpSettings": {
+          "mode": "stream-one",
+          "path": "/happy",
+          "extra": {
+            "xPaddingBytes": "100-1000",
+            "xmux": {
+              "cMaxReuseTimes": 0,
+              "maxConcurrency": "16-32",
+              "maxConnections": 0,
+              "hKeepAlivePeriod": 0,
+              "hMaxRequestTimes": "600-900",
+              "hMaxReusableSecs": "1800-3000"
+            }
+          }
+        },
+        "realitySettings": {
+          "serverName": "xi.mrdk.uk",
+          "publicKey": "hgtX-yjny78aK65Po4PWrRhp0w7RLT7tAmtphCOi_E8",
+          "shortId": "",
+          "fingerprint": "firefox"
+        },
+        "sockopt": {
+          "mark": 255
+        }
+      }
+    },
+    {
+      "tag": "reverse",
+      "protocol": "vless",
+      "settings": {
+        "address": "195.58.49.232",
+        "port": 443,
+        "id": "28484ff1-1d5a-4c5a-ac2f-8377f66b8301",
+        "encryption": "none",
+        "flow": "",
+        "reverse": {
+          "tag": "minecraft"
+        }
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "xhttpSettings": {
+          "mode": "stream-one",
+          "path": "/happy",
+          "extra": {
+            "xPaddingBytes": "100-1000",
+            "xmux": {
+              "cMaxReuseTimes": 0,
+              "maxConcurrency": "8-16",
+              "maxConnections": 0,
+              "hKeepAlivePeriod": 0,
+              "hMaxRequestTimes": "600-900",
+              "hMaxReusableSecs": "1800-3000"
+            }
+          }
+        },
+        "realitySettings": {
+          "serverName": "xi.mrdk.uk",
+          "publicKey": "hgtX-yjny78aK65Po4PWrRhp0w7RLT7tAmtphCOi_E8",
+          "shortId": "",
+          "fingerprint": "firefox"
+        },
+        "sockopt": {
+          "mark": 255
+        }
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "mark": 255
+        }
+      }
+    },
+    {
+      "tag": "fragment",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "AsIs",
+        "fragment": {
+          "interval": "10-20",
+          "length": "50-100",
+          "packets": "tlshello"
+        }
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "none",
+        "sockopt": {
+          "mark": 255,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "type": "http"
+    },
+    {
+      "tag": "dns",
+      "protocol": "dns",
+      "nonIPQuery": "drop"
+    }
+]

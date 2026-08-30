@@ -1,0 +1,105 @@
+{
+    "rules": [
+      {
+        "inboundTag": "minecraft",
+        "outboundTag": "direct",
+        "type": "field"
+      },
+      {
+        "inboundTag": ["socks", "tproxy"],
+        "outboundTag": "direct",
+        "type": "field",
+        "port": 53,
+        "network": "udp"
+      },
+      {
+        "inboundTag": ["tproxy"],
+        "outboundTag": "direct",
+        "type": "field",
+        "port": "27000-30000",
+        "network": "udp"
+      },
+      {
+        "inboundTag": ["socks", "tproxy"],
+        "outboundTag": "direct",
+        "type": "field",
+        "ip": [
+          "ext:private.dat:private"
+        ]
+      },
+      {
+        "inboundTag": ["socks", "tproxy"],
+        "outboundTag": "direct",
+        "type": "field",
+        "protocol": ["bittorrent"]
+      },
+      {
+        "inboundTag": ["socks", "tproxy"],
+        "outboundTag": "direct",
+        "type": "field",
+        "domain": [
+          "domain:null.oxide.cat",
+          "domain:evades.io",
+
+          "domain:sf-converter.com",
+          "domain:savefrom.net",
+
+          "ext:geosite.dat:reddit"
+        ]
+      },
+      {
+        "inboundTag": ["socks", "tproxy"],
+        "outboundTag": "block",
+        "type": "field",
+        "port": 443,
+        "network": "udp"
+      },
+      {
+        "inboundTag": ["socks", "tproxy"],
+        "outboundTag": "proxy",
+        "type": "field",
+        "domain": [
+          "ext:geosite.ru.dat:github",
+          "ext:geosite.ru.dat:twitch-ads",
+          "ext:geosite.ru.dat:youtube",
+          "ext:geosite.ru.dat:telegram"
+        ]
+      },
+      {
+        "inboundTag": ["socks", "tproxy"],
+        "outboundTag": "direct",
+        "type": "field",
+        "ip": [
+          "ext:geoip.ru.dat:direct",
+
+          "212.192.223.15",
+          "195.58.49.232"
+        ]
+      },
+      {
+        "inboundTag": ["socks", "tproxy"],
+        "outboundTag": "direct",
+        "type": "field",
+        "domain": [
+          "ext:geosite.ru.dat:private",
+          "ext:geosite.ru.dat:category-ru",
+          "ext:geosite.ru.dat:microsoft",
+          "ext:geosite.ru.dat:apple",
+          "ext:geosite.ru.dat:google-play",
+          "ext:geosite.ru.dat:epicgames",
+          "ext:geosite.ru.dat:riot",
+          "ext:geosite.ru.dat:steam",
+          "ext:geosite.ru.dat:twitch",
+          "ext:geosite.ru.dat:pinterest",
+          "ext:geosite.ru.dat:faceit"
+        ]
+      },
+      {
+        "inboundTag": ["socks", "tproxy"],
+        "outboundTag": "proxy",
+        "type": "field"
+      }
+    ],
+    "domainStrategy": "IPIfNonMatch",
+    "domainMatcher": "hybrid"
+}

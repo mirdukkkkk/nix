@@ -1,0 +1,9 @@
+{
+    "hosts": {},
+    "servers": ["https+local://1.1.1.1/dns-query"],
+    "queryStrategy": "UseIPv4",
+    "disableCache": false,
+    "disableFallback": true,
+    "disableFallbackIfMatch": false
+}
+
