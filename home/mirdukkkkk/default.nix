@@ -1,14 +1,14 @@
 {
     imports = [
-        ./cli
-        ./desktop
-        ./dev
-        ./shell
+        ../../modules/home
+
+        ./profile.nix
     ];
 
     home = {
         username = "mirdukkkkk";
         homeDirectory = "/home/mirdukkkkk";
+        preferXdgDirectories = true;
         stateVersion = "25.11";
     };
 
