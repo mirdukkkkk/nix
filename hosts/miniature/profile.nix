@@ -9,6 +9,7 @@
 
         # desktop
         ../../modules/nixos/desktop/fonts.nix
+        ../../modules/nixos/desktop/iloader.nix
         ../../modules/nixos/desktop/media.nix
         ../../modules/nixos/desktop/office.nix
         ../../modules/nixos/desktop/plasma.nix
@@ -27,9 +28,6 @@
 
         gaming.enable = true;
 
-        services = {
-            docker.enable = true;
-            usbmuxd.enable = false;
-        };
+        services.docker.enable = true;
     };
 }

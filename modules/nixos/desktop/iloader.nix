@@ -1,0 +1,3 @@
+{
+    programs.iloader.enable = true;
+}
