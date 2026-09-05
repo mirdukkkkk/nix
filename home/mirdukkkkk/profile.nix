@@ -2,6 +2,7 @@
     imports = [
         # shell
         ../../modules/home/shell/eza.nix
+        ../../modules/home/shell/tmux.nix
         ../../modules/home/shell/utils.nix
         ../../modules/home/shell/zoxide.nix
 

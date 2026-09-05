@@ -28,11 +28,6 @@
                 iloader = inputs.iloader.packages.${prev.stdenv.hostPlatform.system}.default;
                 beefetch = inputs.beefetch.packages.${prev.stdenv.hostPlatform.system}.default;
             })
-            (final: prev: {
-                clawd-on-desk = final.unstable.callPackage (inputs.self + "/pkgs/clawd") {
-                    src = inputs.clawd-on-desk;
-                };
-            })
         ];
     };
 }

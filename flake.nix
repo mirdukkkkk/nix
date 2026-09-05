@@ -12,7 +12,7 @@
         };
 
         molten.url = "github:pixelate-it/molten";
-        iloader.url = "github:mirdukkkkk/iloader";
+        iloader.url = "github:mirdukkkkk/iloader/nixos-module";
         beefetch.url = "github:mirdukkkkk/beefetch";
         claude-code.url = "github:sadjow/claude-code-nix?ref=v2";
 
@@ -22,7 +22,7 @@
         };
     };
 
-    outputs = { self, nixpkgs, nur, impermanence, home-manager, ... } @ inputs:
+    outputs = { self, nixpkgs, nur, iloader, impermanence, home-manager, ... } @ inputs:
     {
         nixosConfigurations.miniature = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
@@ -30,6 +30,7 @@
             modules = [
                 ./hosts/miniature
                 nur.modules.nixos.default
+                iloader.nixosModules.default
                 impermanence.nixosModules.impermanence
                 home-manager.nixosModules.home-manager
                 {

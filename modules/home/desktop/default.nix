@@ -1,5 +1,3 @@
 {
-    imports = [
-        ./ios.nix
-    ];
+    imports = [ ];
 }
