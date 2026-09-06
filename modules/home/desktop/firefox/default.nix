@@ -1,13 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
     rycee = pkgs.nur.repos.rycee;
 
-    betterfox = pkgs.fetchFromGitHub {
-        owner = "yokoffing";
-        repo = "Betterfox";
-        rev = "152.0";
-        hash = "sha256-QfisBzeoc8nUrgk/+PTvG9JATsVRWo7RDbohlxkNc+A=";
-    };
+    betterfox = inputs.betterfox;
 
     nur-extensions = with rycee.firefox-addons; [
         cookie-editor

@@ -13,6 +13,7 @@
                     "wheel"
                     "input"
                     "games"
+                    "audio"
                 ] ++ lib.optional config.my.services.docker.enable "docker";
                 shell = if config.my.system.zsh.enable then pkgs.zsh else pkgs.bashInteractive;
             };
