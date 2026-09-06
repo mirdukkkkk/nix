@@ -3,6 +3,7 @@
         initrd = {
             availableKernelModules = [ "ehci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
             kernelModules = [ ];
+            systemd.enable = true;
         };
 
         kernelModules = [ "kvm-intel" ];
