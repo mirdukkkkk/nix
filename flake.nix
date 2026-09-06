@@ -10,9 +10,14 @@
         };
 
         molten.url = "github:pixelate-it/molten";
-        iloader.url = "github:mirdukkkkk/iloader/nixos-module";
+        iloader.url = "github:mirdukkkkk/iloader";
         beefetch.url = "github:mirdukkkkk/beefetch";
         claude-code.url = "github:sadjow/claude-code-nix?ref=v2";
+
+        betterfox = {
+            url = "github:yokoffing/betterfox";
+            flake = false;
+        };
     };
 
     outputs = { self, nixpkgs, nur, iloader, preservation, home-manager, ... } @ inputs:
