@@ -1,12 +1,4 @@
 {
-    #boot.supportedFilesystems = [ "bcachefs" ];
-
-    #fileSystems."/" = {
-    #    device = "/dev/disk/by-uuid/aae3be35-04cf-4565-b5b0-394b76a7889d";
-    #    fsType = "btrfs";
-    #    options = [ "subvol=@" "noatime" "discard=async" "compress=zstd:3" ];
-    #};
-
     fileSystems."/" = {
         fsType = "tmpfs";
         options = [ "size=4G" "mode=755" ];
