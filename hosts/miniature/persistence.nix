@@ -11,9 +11,9 @@
                 { file = "/etc/machine-id"; inInitrd = true; how = "symlink"; configureParent = true; }
                 { file = "/var/lib/systemd/random-seed"; how = "symlink"; inInitrd = true; }
 
-                "/etc/ssh/ssh_host_ed25519_key"
+                { file = "/etc/ssh/ssh_host_ed25519_key"; mode = "0600"; }
                 "/etc/ssh/ssh_host_ed25519_key.pub"
-                "/etc/ssh/ssh_host_rsa_key"
+                { file = "/etc/ssh/ssh_host_rsa_key"; mode = "0600"; }
                 "/etc/ssh/ssh_host_rsa_key.pub"
             ];
         };
