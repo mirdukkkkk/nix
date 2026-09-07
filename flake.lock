@@ -22,11 +22,11 @@
     "betterfox": {
       "flake": false,
       "locked": {
-        "lastModified": 1783031216,
-        "narHash": "sha256-nLkaxpbAMifWxx/RJvuaDpjndzKFPTvAO8o9gR47HtU=",
+        "lastModified": 1788713351,
+        "narHash": "sha256-mIP/WcXUcGrJsWCJzR4zqPOmt0BbbpTZVaN/MbIwBbw=",
         "owner": "yokoffing",
         "repo": "betterfox",
-        "rev": "8e415d1633f10fe0192d9c938e4ca2628eeec9f9",
+        "rev": "067172a4b0dc90e78e5b8b94d9abfe6430c6a7be",
         "type": "github"
       },
       "original": {
@@ -59,6 +59,23 @@
       "original": {
         "owner": "nix-community",
         "repo": "bun2nix",
+        "type": "github"
+      }
+    },
+    "caveman": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788480809,
+        "narHash": "sha256-tEQDv0sIsCzdzaq/tdUSN8nb2xmQJkmjPtq8wKChqvQ=",
+        "owner": "JuliusBrussee",
+        "repo": "caveman",
+        "rev": "b82c0ad42c2bedc1f2cd78e414dadfaffbaaeec3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JuliusBrussee",
+        "ref": "v2.6.0",
+        "repo": "caveman",
         "type": "github"
       }
     },
@@ -358,11 +375,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1788667505,
-        "narHash": "sha256-zJ6z6ulctg3RmzbYzvll40iVWyUNkmH6TlRIyJU6pag=",
+        "lastModified": 1788742097,
+        "narHash": "sha256-1FA+1LONX5E0SBBkv3/OmhQwdjRHtZerKZMD5ezCruo=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "a75ecd1a526ef532a8b9bab7599b92abfeea026b",
+        "rev": "8234d1116023eac4be6e4c772224e0d30463b60d",
         "type": "github"
       },
       "original": {
@@ -390,6 +407,7 @@
       "inputs": {
         "beefetch": "beefetch",
         "betterfox": "betterfox",
+        "caveman": "caveman",
         "claude-code": "claude-code",
         "home-manager": "home-manager",
         "iloader": "iloader",

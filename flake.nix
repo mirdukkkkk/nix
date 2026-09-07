@@ -18,6 +18,11 @@
             url = "github:yokoffing/betterfox";
             flake = false;
         };
+
+        caveman = {
+            url = "github:JuliusBrussee/caveman?ref=v2.6.0";
+            flake = false;
+        };
     };
 
     outputs = { self, nixpkgs, nur, iloader, preservation, home-manager, ... } @ inputs:
