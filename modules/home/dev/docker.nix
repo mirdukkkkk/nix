@@ -11,6 +11,8 @@ in
     };
 
     config = lib.mkIf cfg.enable {
+        home.packages = [ pkgs.hadolint ];
+
         programs.vscode.profiles.default = {
             extensions = with pkgs.vscode-extensions; [
                 ms-azuretools.vscode-containers
