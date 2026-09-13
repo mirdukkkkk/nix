@@ -9,7 +9,10 @@
         name = "mirdukkkkk";
         signingkey = "~/.ssh/id_ed25519.pub";
       };
-      gpg.format = "ssh";
+      gpg = {
+        format = "ssh";
+        ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+      };
       commit.gpgsign = true;
       tag.gpgsign = true;
     };
