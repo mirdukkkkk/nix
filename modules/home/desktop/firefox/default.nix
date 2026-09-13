@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 let
     rycee = pkgs.nur.repos.rycee;
 
@@ -35,11 +35,36 @@ in
                 (builtins.readFile "${betterfox}/Smoothfox.js")
             ];
 
+            search = {
+                default = "google";
+                force = true;
+                engines = {
+                    GitHub = {
+                        urls = [ { template = "https://github.com/search?q={searchTerms}"; } ];
+                        icon = "https://github.com/fluidicon.png";
+                        updateInterval = 7 * 24 * 60 * 60 * 1000;
+                        definedAliases = [ "@gh" ];
+                    };
+                    "Nix Packages" = {
+                        urls = [ { template = "https://search.nixos.org/packages?type=packages&query={searchTerms}"; } ];
+                        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                        definedAliases = [ "@np" ];
+                    };
+                    "Nix Options" = {
+                        urls = [ { template = "https://search.nixos.org/options?query={searchTerms}"; } ];
+                        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                        definedAliases = [ "@no" ];
+                    };
+                };
+            };
+
             settings = {
+                # Startup / session
                 "browser.startup.page" = 3;
                 "browser.sessionstore.resume_from_crash" = true;
                 "browser.sessionstore.restore_on_demand" = true;
 
+                # Telemetry / data reporting
                 "app.shield.optoutstudies.enabled" = false;
                 "browser.discovery.enabled" = false;
                 "browser.newtabpage.activity-stream.feeds.telemetry" = false;
@@ -59,10 +84,29 @@ in
                 "toolkit.telemetry.unified" = false;
                 "toolkit.telemetry.updatePing.enabled" = false;
 
+                # Privacy
                 "privacy.clearOnShutdown.history" = false;
-                "devtools.chrome.enabled" = true;
                 "geo.enabled" = false;
+                "browser.ml.enable" = false;
+                "browser.ml.chat.enabled" = false;
 
+                # Sync: keep identity, skip syncing extensions (managed by Nix instead).
+                "services.sync.username" = config.my.identity.email;
+                "services.sync.engine.addons" = false;
+
+                # Extensions: managed by Nix, don't self-update.
+                "extensions.update.autoUpdateDefault" = false;
+                "extensions.update.enabled" = false;
+
+                # Devtools
+                # Enables the Browser Console (privileged JS context) for extension/UI debugging.
+                "devtools.chrome.enabled" = true;
+
+                # Performance
+                "gfx.webrender.all" = true;
+
+                # Input / misc UX
+                "general.autoScroll" = true;
                 "middlemouse.paste" = false;
             };
 

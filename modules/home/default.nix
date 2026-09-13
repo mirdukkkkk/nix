@@ -6,5 +6,6 @@
         ./shell
 
         ./gaming.nix
+        ./identity.nix
     ];
 }
