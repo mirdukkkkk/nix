@@ -1,6 +1,7 @@
 {
     imports = [
         ./coredump.nix
+        ./fish.nix
         ./journald.nix
         ./locale.nix
         ./nix.nix

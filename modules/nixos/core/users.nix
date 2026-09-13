@@ -15,7 +15,10 @@
                     "games"
                     "audio"
                 ] ++ lib.optional config.my.services.docker.enable "docker";
-                shell = if config.my.system.zsh.enable then pkgs.zsh else pkgs.bashInteractive;
+                shell =
+                    if config.my.system.fish.enable then pkgs.fish
+                    else if config.my.system.zsh.enable then pkgs.zsh
+                    else pkgs.bashInteractive;
             };
         };
     };
