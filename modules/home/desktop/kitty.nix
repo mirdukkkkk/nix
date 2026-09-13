@@ -4,6 +4,12 @@
 
     settings = {
       copy_on_select = "yes";
+
+      # Trailing smear animation when the cursor moves/jumps, instead of
+      # an instant teleport.
+      cursor_trail = 1;
+      cursor_trail_decay_fast = 0.1;
+      cursor_trail_decay_slow = 0.3;
     };
 
     keybindings = {
