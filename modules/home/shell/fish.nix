@@ -15,7 +15,9 @@ in
         # no plugins needed for what oh-my-zsh provided on the zsh side.
         programs.fish.enable = true;
 
-        # Only fires in login shells; drop fish's default banner.
-        programs.fish.loginShellInit = "set --erase fish_greeting";
+        # interactiveShellInit (not loginShellInit) so this fires for every
+        # interactive shell, not just TTY logins - kitty/tmux windows are
+        # non-login shells and would otherwise still show the banner.
+        programs.fish.interactiveShellInit = "set --erase fish_greeting";
     };
 }
