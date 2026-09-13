@@ -5,6 +5,7 @@
       allowUnfree = true;
     };
     overlays = [
+      (import ../../../packages)
       inputs.claude-code.overlays.default
       (final: prev: {
         unstable = import inputs.nixpkgs-unstable {
