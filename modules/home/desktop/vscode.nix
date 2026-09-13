@@ -25,6 +25,14 @@
         "workbench.activityBar.location" = "top";
         "window.titleBarStyle" = "custom";
 
+        # Catppuccin's customUIColors/colorOverrides schema is on
+        # raw.githubusercontent.com; VS Code's default trust for that host
+        # doesn't cover it (github.com/catppuccin/vscode#641), so trust the
+        # exact prefix explicitly to silence the "untrusted" warning.
+        "json.schemaDownload.trustedDomains" = {
+          "https://raw.githubusercontent.com/catppuccin/vscode/" = true;
+        };
+
         # Editor behavior
         "editor.minimap.enabled" = false;
         "editor.cursorBlinking" = "smooth";
