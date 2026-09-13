@@ -25,7 +25,7 @@
     ];
 
     my = {
-        system.zsh.enable = true;
+        system.fish.enable = true;
 
         services.docker.enable = true;
     };
