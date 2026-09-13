@@ -6,6 +6,7 @@
                 "/etc/nixos"
                 "/var/lib/nixos"
                 "/var/lib/AccountsService"
+                "/var/lib/flatpak"
             ];
             files = [
                 { file = "/etc/machine-id"; inInitrd = true; how = "symlink"; configureParent = true; }

@@ -16,6 +16,7 @@
         ../../modules/nixos/desktop/sound.nix
 
         # services
+        ../../modules/nixos/services/flatpak.nix
         ../../modules/nixos/services/fstrim.nix
         ../../modules/nixos/services/lact.nix
         ../../modules/nixos/services/ratbagd.nix
@@ -25,8 +26,6 @@
 
     my = {
         system.zsh.enable = true;
-
-        gaming.enable = true;
 
         services.docker.enable = true;
     };
