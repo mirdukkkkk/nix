@@ -70,12 +70,6 @@
           "editor.detectIndentation" = false;
         };
 
-        # Copilot
-        "github.copilot.enable" = {
-          "*" = true;
-          "markdown" = true;
-        };
-
         # vscord (Discord rich presence)
         "vscord.app.name" = "Visual Studio Code";
       };
