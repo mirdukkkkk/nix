@@ -14,6 +14,8 @@
         okular
         khelpcenter
         krdp
+        kinfocenter
+        kdepim-runtime
     ];
 
     environment.systemPackages = with pkgs.kdePackages; [
