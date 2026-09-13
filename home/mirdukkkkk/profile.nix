@@ -36,5 +36,8 @@
         ../../modules/home/desktop/vscode.nix
     ];
 
-    my.cli.nix.flake = "/home/mirdukkkkk/.dotfiles";
+    my = {
+        cli.nix.flake = "/home/mirdukkkkk/.dotfiles";
+        identity.email = "karmulav@gmail.com";
+    };
 }
