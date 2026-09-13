@@ -4,6 +4,7 @@
         nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
         nur.url = "github:nix-community/nur";
         preservation.url = "github:nix-community/preservation";
+        nix-flatpak.url = "github:gmodena/nix-flatpak";
         home-manager = {
             url = "github:nix-community/home-manager/release-26.05";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +26,7 @@
         };
     };
 
-    outputs = { self, nixpkgs, nur, iloader, preservation, home-manager, ... } @ inputs:
+    outputs = { self, nixpkgs, nur, iloader, preservation, nix-flatpak, home-manager, ... } @ inputs:
     {
         nixosConfigurations.miniature = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
@@ -35,6 +36,7 @@
                 nur.modules.nixos.default
                 iloader.nixosModules.default
                 preservation.nixosModules.preservation
+                nix-flatpak.nixosModules.nix-flatpak
                 home-manager.nixosModules.home-manager
                 {
                     home-manager = {
