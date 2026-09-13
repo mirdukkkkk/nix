@@ -21,7 +21,7 @@ rustPlatform.buildRustPackage {
     mkdir -p $out/share/spotify-adblock
 
     cp target/x86_64-unknown-linux-gnu/release/libspotifyadblock.so \
-        $out/lib/libspotifyadblock.so
+      $out/lib/libspotifyadblock.so
     cp config.toml $out/share/spotify-adblock/config.toml
   '';
 
