@@ -1,76 +1,76 @@
 { pkgs, ... }:
 {
-    programs.vscode = {
-        enable = true;
-        mutableExtensionsDir = false;
+  programs.vscode = {
+    enable = true;
+    mutableExtensionsDir = false;
 
-        profiles.default = {
-            extensions = with pkgs.vscode-extensions; [
-                catppuccin.catppuccin-vsc
-                catppuccin.catppuccin-vsc-icons
-                esbenp.prettier-vscode
-                github.github-vscode-theme
-                leonardssh.vscord
-                ms-vscode.makefile-tools
-                oderwat.indent-rainbow
-            ];
+    profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        catppuccin.catppuccin-vsc
+        catppuccin.catppuccin-vsc-icons
+        esbenp.prettier-vscode
+        github.github-vscode-theme
+        leonardssh.vscord
+        ms-vscode.makefile-tools
+        oderwat.indent-rainbow
+      ];
 
-            userSettings = {
-                # Telemetry
-                "telemetry.telemetryLevel" = "off";
+      userSettings = {
+        # Telemetry
+        "telemetry.telemetryLevel" = "off";
 
-                # Theme / workbench
-                "workbench.iconTheme" = "catppuccin-macchiato";
-                "workbench.colorTheme" = "Catppuccin Macchiato";
-                "workbench.activityBar.location" = "top";
-                "window.titleBarStyle" = "custom";
+        # Theme / workbench
+        "workbench.iconTheme" = "catppuccin-macchiato";
+        "workbench.colorTheme" = "Catppuccin Macchiato";
+        "workbench.activityBar.location" = "top";
+        "window.titleBarStyle" = "custom";
 
-                # Editor behavior
-                "editor.minimap.enabled" = false;
-                "editor.cursorBlinking" = "smooth";
-                "editor.smoothScrolling" = true;
-                "editor.stickyScroll.enabled" = false;
-                "editor.stickyScroll.scrollWithEditor" = false;
+        # Editor behavior
+        "editor.minimap.enabled" = false;
+        "editor.cursorBlinking" = "smooth";
+        "editor.smoothScrolling" = true;
+        "editor.stickyScroll.enabled" = false;
+        "editor.stickyScroll.scrollWithEditor" = false;
 
-                # Files
-                "files.autoSave" = "onFocusChange";
-                "files.insertFinalNewline" = true;
-                "files.trimFinalNewlines" = true;
-                "files.trimTrailingWhitespace" = true;
+        # Files
+        "files.autoSave" = "onFocusChange";
+        "files.insertFinalNewline" = true;
+        "files.trimFinalNewlines" = true;
+        "files.trimTrailingWhitespace" = true;
 
-                # Formatting (default: Prettier)
-                "editor.defaultFormatter" = "esbenp.prettier-vscode";
-                "editor.formatOnPaste" = true;
-                "editor.formatOnSave" = true;
-                "prettier.tabWidth" = 4;
+        # Formatting (default: Prettier)
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "editor.formatOnPaste" = true;
+        "editor.formatOnSave" = true;
+        "prettier.tabWidth" = 4;
 
-                "[json]" = {
-                    "editor.defaultFormatter" = "esbenp.prettier-vscode";
-                };
-                "[jsonc]" = {
-                    "editor.defaultFormatter" = "esbenp.prettier-vscode";
-                };
-
-                "[yaml]" = {
-                    "editor.tabSize" = 2;
-                    "editor.insertSpaces" = true;
-                    "editor.detectIndentation" = false;
-                };
-                "[yml]" = {
-                    "editor.tabSize" = 2;
-                    "editor.insertSpaces" = true;
-                    "editor.detectIndentation" = false;
-                };
-
-                # Copilot
-                "github.copilot.enable" = {
-                    "*" = true;
-                    "markdown" = true;
-                };
-
-                # vscord (Discord rich presence)
-                "vscord.app.name" = "Visual Studio Code";
-            };
+        "[json]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
+        "[jsonc]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+
+        "[yaml]" = {
+          "editor.tabSize" = 2;
+          "editor.insertSpaces" = true;
+          "editor.detectIndentation" = false;
+        };
+        "[yml]" = {
+          "editor.tabSize" = 2;
+          "editor.insertSpaces" = true;
+          "editor.detectIndentation" = false;
+        };
+
+        # Copilot
+        "github.copilot.enable" = {
+          "*" = true;
+          "markdown" = true;
+        };
+
+        # vscord (Discord rich presence)
+        "vscord.app.name" = "Visual Studio Code";
+      };
     };
+  };
 }

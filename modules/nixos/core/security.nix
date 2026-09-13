@@ -1,10 +1,10 @@
 {
-    security = {
-        sudo.enable = false;
+  security = {
+    sudo.enable = false;
 
-        sudo-rs = {
-            enable = true;
-            execWheelOnly = true;
-        };
+    sudo-rs = {
+      enable = true;
+      execWheelOnly = true;
     };
+  };
 }

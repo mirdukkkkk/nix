@@ -1,25 +1,34 @@
-{ pkgs, config, lib, ... }:
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+{
+  users = {
+    mutableUsers = false;
+
     users = {
-        mutableUsers = false;
+      root.hashedPasswordFile = "/persist/.secrets/root-password";
 
-        users = {
-            root.hashedPasswordFile = "/persist/.secrets/root-password";
-
-            mirdukkkkk = {
-                isNormalUser = true;
-                hashedPasswordFile = "/persist/.secrets/mirdukkkkk-password";
-                extraGroups = [
-                    "wheel"
-                    "input"
-                    "games"
-                    "audio"
-                ] ++ lib.optional config.my.services.docker.enable "docker";
-                shell =
-                    if config.my.system.fish.enable then pkgs.fish
-                    else if config.my.system.zsh.enable then pkgs.zsh
-                    else pkgs.bashInteractive;
-            };
-        };
+      mirdukkkkk = {
+        isNormalUser = true;
+        hashedPasswordFile = "/persist/.secrets/mirdukkkkk-password";
+        extraGroups = [
+          "wheel"
+          "input"
+          "games"
+          "audio"
+        ]
+        ++ lib.optional config.my.services.docker.enable "docker";
+        shell =
+          if config.my.system.fish.enable then
+            pkgs.fish
+          else if config.my.system.zsh.enable then
+            pkgs.zsh
+          else
+            pkgs.bashInteractive;
+      };
     };
+  };
 }

@@ -1,11 +1,11 @@
 {
-    imports = [
-        ./cli
-        ./desktop
-        ./dev
-        ./shell
+  imports = [
+    ./cli
+    ./desktop
+    ./dev
+    ./shell
 
-        ./gaming.nix
-        ./identity.nix
-    ];
+    ./gaming.nix
+    ./identity.nix
+  ];
 }

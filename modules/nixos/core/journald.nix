@@ -1,3 +1,3 @@
 {
-    services.journald.storage = "volatile";
+  services.journald.storage = "volatile";
 }

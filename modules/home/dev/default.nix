@@ -1,5 +1,5 @@
 {
-    imports = [
-        ./docker.nix
-    ];
+  imports = [
+    ./docker.nix
+  ];
 }

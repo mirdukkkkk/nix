@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
-    home.packages = with pkgs; [
-        (unstable.bottles.override {
-            removeWarningPopup = true;
-        })
-    ];
+  home.packages = with pkgs; [
+    (unstable.bottles.override {
+      removeWarningPopup = true;
+    })
+  ];
 }

@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
-    home.packages = with pkgs; [
-        amdgpu_top
-        htop
-        btop
-    ];
+  home.packages = with pkgs; [
+    amdgpu_top
+    htop
+    btop
+  ];
 }

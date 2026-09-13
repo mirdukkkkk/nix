@@ -1,3 +1,3 @@
 {
-    programs.iloader.enable = true;
+  programs.iloader.enable = true;
 }
