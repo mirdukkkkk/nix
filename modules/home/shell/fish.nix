@@ -18,6 +18,9 @@ in
         # interactiveShellInit (not loginShellInit) so this fires for every
         # interactive shell, not just TTY logins - kitty/tmux windows are
         # non-login shells and would otherwise still show the banner.
-        programs.fish.interactiveShellInit = "set --erase fish_greeting";
+        #
+        # Must be set to an empty string, not erased: fish_greeting falls
+        # back to its hardcoded default text when the variable is unset.
+        programs.fish.interactiveShellInit = "set -g fish_greeting";
     };
 }
