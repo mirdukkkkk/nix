@@ -26,6 +26,14 @@ in
     #
     # Must be set to an empty string, not erased: fish_greeting falls
     # back to its hardcoded default text when the variable is unset.
-    programs.fish.interactiveShellInit = "set -g fish_greeting";
+    #
+    # Prompt colors: user@host stays fish's default green, only cwd
+    # (yellow) and git branch (blue) are overridden.
+    programs.fish.interactiveShellInit = ''
+      set -g fish_greeting
+      set -g fish_color_cwd yellow
+      set -g __fish_git_prompt_color_branch blue
+      set -g __fish_git_prompt_showdirtystate yes
+    '';
   };
 }
