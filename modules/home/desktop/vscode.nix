@@ -16,26 +16,29 @@
             ];
 
             userSettings = {
+                # Telemetry
                 "telemetry.telemetryLevel" = "off";
 
+                # Theme / workbench
                 "workbench.iconTheme" = "catppuccin-macchiato";
                 "workbench.colorTheme" = "Catppuccin Macchiato";
                 "workbench.activityBar.location" = "top";
+                "window.titleBarStyle" = "custom";
 
+                # Editor behavior
+                "editor.minimap.enabled" = false;
                 "editor.cursorBlinking" = "smooth";
-
                 "editor.smoothScrolling" = true;
                 "editor.stickyScroll.enabled" = false;
                 "editor.stickyScroll.scrollWithEditor" = false;
 
+                # Files
                 "files.autoSave" = "onFocusChange";
                 "files.insertFinalNewline" = true;
+                "files.trimFinalNewlines" = true;
                 "files.trimTrailingWhitespace" = true;
 
-                "window.titleBarStyle" = "custom";
-
-                "vscord.app.name" = "Visual Studio Code";
-
+                # Formatting (default: Prettier)
                 "editor.defaultFormatter" = "esbenp.prettier-vscode";
                 "editor.formatOnPaste" = true;
                 "editor.formatOnSave" = true;
@@ -58,6 +61,15 @@
                     "editor.insertSpaces" = true;
                     "editor.detectIndentation" = false;
                 };
+
+                # Copilot
+                "github.copilot.enable" = {
+                    "*" = true;
+                    "markdown" = true;
+                };
+
+                # vscord (Discord rich presence)
+                "vscord.app.name" = "Visual Studio Code";
             };
         };
     };

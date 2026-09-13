@@ -22,10 +22,26 @@ in
 
             nopt = "sudo nix store optimise";
             nclean = "sudo nix-collect-garbage -d";
+
+            nrun =  "nix run";
         };
 
         programs.vscode.profiles.default = {
-            extensions = with pkgs.vscode-extensions; [ bbenoist.nix ];
+            extensions = with pkgs.vscode-extensions; [
+                bbenoist.nix
+                jnoortheen.nix-ide
+            ];
+
+            userSettings = {
+                "nix.enableLanguageServer" = true;
+                "nix.serverPath" = "nixd";
+                "nix.formatterPath" = "nixfmt";
+
+                "[nix]" = {
+                    "editor.defaultFormatter" = "jnoortheen.nix-ide";
+                    "editor.tabSize" = 2;
+                };
+            };
         };
     };
 }
