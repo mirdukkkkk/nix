@@ -1,23 +1,23 @@
 { pkgs, ... }:
 {
-    home.packages = with pkgs; [
-        bat
-        #ripgrep
-        #fd
-        duf
-        dust
-        bottom
-    ];
+  home.packages = with pkgs; [
+    bat
+    #ripgrep
+    #fd
+    duf
+    dust
+    bottom
+  ];
 
-    home.shellAliases = {
-        cat = "bat";
+  home.shellAliases = {
+    cat = "bat";
 
-        top = "btm";
+    top = "btm";
 
-        #grep = "rg";
-        #find = "fd";
+    #grep = "rg";
+    #find = "fd";
 
-        df = "duf";
-        du = "dust";
-    };
+    df = "duf";
+    du = "dust";
+  };
 }

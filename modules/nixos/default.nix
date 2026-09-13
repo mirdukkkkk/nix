@@ -1,11 +1,11 @@
 {
-    imports = [
-        ./core
-        ./desktop
-        ./kernel
-        ./services
+  imports = [
+    ./core
+    ./desktop
+    ./kernel
+    ./services
 
-        ./gaming.nix
-        ./packages.nix
-    ];
+    ./gaming.nix
+    ./packages.nix
+  ];
 }

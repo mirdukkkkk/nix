@@ -1,3 +1,3 @@
 {
-    systemd.coredump.enable = false;
+  systemd.coredump.enable = false;
 }

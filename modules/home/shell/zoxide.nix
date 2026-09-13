@@ -1,8 +1,8 @@
 {
-    programs.zoxide = {
-        enable = true;
-        options = [ "--cmd cd" ];
-    };
+  programs.zoxide = {
+    enable = true;
+    options = [ "--cmd cd" ];
+  };
 
-    home.sessionVariables._ZO_DOCTOR = "0";
+  home.sessionVariables._ZO_DOCTOR = "0";
 }

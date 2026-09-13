@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
-    home.packages = with pkgs; [
-        libresprite
-        gimp
-    ];
+  home.packages = with pkgs; [
+    libresprite
+    gimp
+  ];
 }

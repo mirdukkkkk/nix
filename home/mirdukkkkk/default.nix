@@ -1,16 +1,16 @@
 {
-    imports = [
-        ../../modules/home
+  imports = [
+    ../../modules/home
 
-        ./profile.nix
-    ];
+    ./profile.nix
+  ];
 
-    home = {
-        username = "mirdukkkkk";
-        homeDirectory = "/home/mirdukkkkk";
-        preferXdgDirectories = true;
-        stateVersion = "25.11";
-    };
+  home = {
+    username = "mirdukkkkk";
+    homeDirectory = "/home/mirdukkkkk";
+    preferXdgDirectories = true;
+    stateVersion = "25.11";
+  };
 
-    programs.home-manager.enable = true;
+  programs.home-manager.enable = true;
 }

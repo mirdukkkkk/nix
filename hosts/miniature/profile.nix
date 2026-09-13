@@ -1,32 +1,32 @@
 {
-    imports = [
-        # core
-        ../../modules/nixos/core/ld.nix
-        ../../modules/nixos/core/zram.nix
+  imports = [
+    # core
+    ../../modules/nixos/core/ld.nix
+    ../../modules/nixos/core/zram.nix
 
-        # kernel
-        ../../modules/nixos/kernel/tuning.nix
+    # kernel
+    ../../modules/nixos/kernel/tuning.nix
 
-        # desktop
-        ../../modules/nixos/desktop/fonts.nix
-        ../../modules/nixos/desktop/iloader.nix
-        ../../modules/nixos/desktop/media.nix
-        ../../modules/nixos/desktop/office.nix
-        ../../modules/nixos/desktop/plasma.nix
-        ../../modules/nixos/desktop/sound.nix
+    # desktop
+    ../../modules/nixos/desktop/fonts.nix
+    ../../modules/nixos/desktop/iloader.nix
+    ../../modules/nixos/desktop/media.nix
+    ../../modules/nixos/desktop/office.nix
+    ../../modules/nixos/desktop/plasma.nix
+    ../../modules/nixos/desktop/sound.nix
 
-        # services
-        ../../modules/nixos/services/flatpak.nix
-        ../../modules/nixos/services/fstrim.nix
-        ../../modules/nixos/services/lact.nix
-        ../../modules/nixos/services/ratbagd.nix
-        ../../modules/nixos/services/ssh.nix
-        ../../modules/nixos/services/xray
-    ];
+    # services
+    ../../modules/nixos/services/flatpak.nix
+    ../../modules/nixos/services/fstrim.nix
+    ../../modules/nixos/services/lact.nix
+    ../../modules/nixos/services/ratbagd.nix
+    ../../modules/nixos/services/ssh.nix
+    ../../modules/nixos/services/xray
+  ];
 
-    my = {
-        system.fish.enable = true;
+  my = {
+    system.fish.enable = true;
 
-        services.docker.enable = true;
-    };
+    services.docker.enable = true;
+  };
 }

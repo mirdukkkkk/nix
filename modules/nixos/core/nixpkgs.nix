@@ -1,30 +1,31 @@
 { inputs, ... }:
 {
-    nixpkgs = {
-        config = {
-            allowUnfree = true;
-        };
-        overlays = [
-            inputs.claude-code.overlays.default
-            (final: prev: {
-                unstable = import inputs.nixpkgs-unstable {
-                    system = prev.system;
-                    config = prev.config;
-                };
-            })
-            (final: prev: {
-                mongodb-compass = prev.mongodb-compass.overrideAttrs (old: {
-                    buildCommand = builtins.replaceStrings
-                        [ "wrapGAppsHook $out/bin/mongodb-compass" ]
-                        [ "wrapGApp $out/bin/mongodb-compass" ]
-                    old.buildCommand;
-                });
-            })
-            (final: prev: {
-                molten = inputs.molten.packages.${prev.stdenv.hostPlatform.system}.default;
-                iloader = inputs.iloader.packages.${prev.stdenv.hostPlatform.system}.default;
-                beefetch = inputs.beefetch.packages.${prev.stdenv.hostPlatform.system}.default;
-            })
-        ];
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
     };
+    overlays = [
+      inputs.claude-code.overlays.default
+      (final: prev: {
+        unstable = import inputs.nixpkgs-unstable {
+          system = prev.system;
+          config = prev.config;
+        };
+      })
+      (final: prev: {
+        mongodb-compass = prev.mongodb-compass.overrideAttrs (old: {
+          buildCommand =
+            builtins.replaceStrings
+              [ "wrapGAppsHook $out/bin/mongodb-compass" ]
+              [ "wrapGApp $out/bin/mongodb-compass" ]
+              old.buildCommand;
+        });
+      })
+      (final: prev: {
+        molten = inputs.molten.packages.${prev.stdenv.hostPlatform.system}.default;
+        iloader = inputs.iloader.packages.${prev.stdenv.hostPlatform.system}.default;
+        beefetch = inputs.beefetch.packages.${prev.stdenv.hostPlatform.system}.default;
+      })
+    ];
+  };
 }

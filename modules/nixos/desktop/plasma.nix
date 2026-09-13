@@ -1,27 +1,27 @@
 { pkgs, ... }:
 {
-    services = {
-        desktopManager.plasma6.enable = true;
-        displayManager.plasma-login-manager.enable = true;
-    };
+  services = {
+    desktopManager.plasma6.enable = true;
+    displayManager.plasma-login-manager.enable = true;
+  };
 
-    environment.plasma6.excludePackages = with pkgs.kdePackages; [
-        aurorae
-        spectacle
-        konsole
-        kwin-x11
-        elisa
-        okular
-        khelpcenter
-        krdp
-        kinfocenter
-        kdepim-runtime
-    ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    aurorae
+    spectacle
+    konsole
+    kwin-x11
+    elisa
+    okular
+    khelpcenter
+    krdp
+    kinfocenter
+    kdepim-runtime
+  ];
 
-    environment.systemPackages = with pkgs.kdePackages; [
-        qtsvg
-        filelight
-        kolourpaint
-        kdenlive
-    ];
+  environment.systemPackages = with pkgs.kdePackages; [
+    qtsvg
+    filelight
+    kolourpaint
+    kdenlive
+  ];
 }

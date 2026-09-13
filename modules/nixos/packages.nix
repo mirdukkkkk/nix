@@ -1,16 +1,16 @@
 { pkgs, ... }:
 {
-    environment.systemPackages = with pkgs; [
-        wget
-        curl
+  environment.systemPackages = with pkgs; [
+    wget
+    curl
 
-        e2fsprogs
-        ntfs3g
-        exfat
+    e2fsprogs
+    ntfs3g
+    exfat
 
-        rar
-        unrar
-        zip
-        unzip
-    ];
+    rar
+    unrar
+    zip
+    unzip
+  ];
 }

@@ -1,11 +1,11 @@
 {
-    services.flameshot = {
-        enable = true;
-        settings = {
-            General = {
-                disabledTrayIcon = true;
-                showStartupLaunchMessage = false;
-            };
-        };
+  services.flameshot = {
+    enable = true;
+    settings = {
+      General = {
+        disabledTrayIcon = true;
+        showStartupLaunchMessage = false;
+      };
     };
+  };
 }
