@@ -1,5 +1,6 @@
 {
   inputs = {
+    # nix
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/nur";
@@ -10,18 +11,29 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # programs
     molten.url = "github:pixelate-it/molten";
     iloader.url = "github:mirdukkkkk/iloader";
     beefetch.url = "github:mirdukkkkk/beefetch";
     claude-code.url = "github:sadjow/claude-code-nix?ref=v2";
 
+    # firefox
     betterfox = {
       url = "github:yokoffing/betterfox";
       flake = false;
     };
 
+    # claude skills/plugins
     caveman = {
-      url = "github:JuliusBrussee/caveman?ref=v2.6.0";
+      url = "github:JuliusBrussee/caveman";
+      flake = false;
+    };
+    security-audit-skill = {
+      url = "github:cloudflare/security-audit-skill";
+      flake = false;
+    };
+    ascii-art = {
+      url = "github:mirdukkkkk/ascii-art";
       flake = false;
     };
   };
