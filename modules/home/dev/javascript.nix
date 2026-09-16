@@ -10,7 +10,7 @@ let
 in
 {
   home = {
-    packages = [ pkgs.yarn ];
+    packages = [ pkgs.yarn pkgs.pnpm ];
     sessionPath = [ "${config.xdg.dataHome}/npm/bin" ];
   };
 
