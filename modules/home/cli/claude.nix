@@ -145,6 +145,11 @@ in
     # list form instead of `plugins.caveman = ...`.
     plugins = [ inputs.caveman ];
 
+    skills = {
+      security-audit = "${inputs.security-audit-skill}/skills/security-audit";
+      ascii-art = "${inputs.ascii-art}";
+    };
+
     context = ''
       # Environment
 
