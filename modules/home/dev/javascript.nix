@@ -1,13 +1,4 @@
 { pkgs, config, ... }:
-let
-  bun = pkgs.bun.overrideAttrs (oldAttrs: rec {
-    version = "1.4.2";
-    src = pkgs.fetchurl {
-      url = "https://github.com/oven-sh/bun/releases/download/bun-v${version}/bun-linux-x64.zip";
-      hash = "sha256-NjaPrvdSeHXV/6UuU81IAhdB8qg+tiCKjdZAaNQiqRM=";
-    };
-  });
-in
 {
   home = {
     packages = [ pkgs.yarn pkgs.pnpm ];
@@ -38,7 +29,7 @@ in
     };
     bun = {
       enable = true;
-      package = bun;
+      package = pkgs.unstable.bun;
       settings = {
         telemetry = false;
         install = {

@@ -46,4 +46,16 @@
       tmpfsSize = "50%";
     };
   };
+
+  # `nowatchdog` above only disables the softlockup/NMI lockup detector, not
+  # the discrete hardware watchdog timers (iTCO_wdt, intel_oc_wdt) this board
+  # exposes as /dev/watchdog*. systemd's own upstream default arms whichever
+  # one it finds for 10min as a shutdown-hang safety net, then can't always
+  # cleanly disarm iTCO_wdt on close -- hence "watchdog did not stop!" on
+  # every shutdown/reboot. Disabling this rearms nothing, so the message
+  # never fires. Set on both systemd instances: the initrd one runs the
+  # final unmount-real-root stage of shutdown (boot.initrd.systemd.enable
+  # above), so it can independently re-arm the same watchdog if left alone.
+  systemd.settings.Manager.RebootWatchdogSec = "0";
+  boot.initrd.systemd.settings.Manager.RebootWatchdogSec = "0";
 }

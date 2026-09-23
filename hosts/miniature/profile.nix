@@ -1,7 +1,7 @@
 {
   imports = [
     # core
-    ../../modules/nixos/core/ld.nix
+    #../../modules/nixos/core/ld.nix
     ../../modules/nixos/core/zram.nix
 
     # kernel
@@ -28,5 +28,6 @@
     system.fish.enable = true;
 
     services.docker.enable = true;
+    services.minecraft.enable = true;
   };
 }

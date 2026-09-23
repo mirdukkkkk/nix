@@ -72,6 +72,17 @@
     ];
   };
 
+  fileSystems."/var/lib/minecraft" = {
+    device = "/dev/disk/by-uuid/aae3be35-04cf-4565-b5b0-394b76a7889d";
+    fsType = "btrfs";
+    options = [
+      "subvol=@minecraft"
+      "noatime"
+      "discard=async"
+      "nodatacow"
+    ];
+  };
+
   swapDevices = [
     {
       device = "/dev/disk/by-uuid/6a050789-15f0-4d15-866a-da30c65794a0";

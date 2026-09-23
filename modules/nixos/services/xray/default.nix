@@ -9,55 +9,48 @@ let
     hash = "sha256-jHnwCGVVw5MqdhdFsVh1RKF5vxy6cONxpyAUTN2j1Jo=";
   };
 
-  inbounds = builtins.fromJSON (builtins.readFile ./config/inbounds.json);
-
   roscomvpn-assets = pkgs.runCommand "roscomvpn-assets" { } ''
     mkdir -p $out/share/v2ray
 
     cp ${roscomvpn-geoip} $out/share/v2ray/geoip.ru.dat
     cp ${roscomvpn-geosite} $out/share/v2ray/geosite.ru.dat
   '';
+
+  configPath = "/etc/xray/config.json";
 in
 {
   imports = [ ./tproxy.nix ];
 
   options.my.services.xray.tproxyPort = lib.mkOption {
     type = lib.types.port;
-    default = (lib.findFirst (i: i.tag == "tproxy") null inbounds).port;
-    defaultText = lib.literalMD "the port of the inbound tagged `tproxy` from `config/inbounds.json`";
+    default = 12345;
     description = ''
-      Port that nftables redirects traffic to. Defaults to the
-      value from the xray config itself, so the ruleset and the
-      inbound can't drift apart.
+      Port that nftables redirects traffic to. Must match the
+      `tproxy` inbound port in the xray config at ${configPath}.
     '';
   };
 
   config = {
+    # ${configPath} holds the full xray config (log/dns/inbounds/outbounds/routing),
+    # including VLESS auth UUIDs. Managed imperatively on the host, never in the
+    # nix store or git. Preserved across reboots since /etc is tmpfs here.
+    preservation.preserveAt."/persist".files = [
+      {
+        file = configPath;
+        mode = "0600";
+      }
+    ];
+
     services.xray = {
       enable = true;
-      package = pkgs.xray.override {
+      package = pkgs.unstable.xray.override {
         assets = [
-          pkgs.v2ray-geoip
-          pkgs.v2ray-domain-list-community
+          pkgs.unstable.v2ray-geoip
+          pkgs.unstable.v2ray-domain-list-community
           roscomvpn-assets
         ];
       };
-      settings =
-        let
-          log = builtins.fromJSON (builtins.readFile ./config/log.json);
-          dns = builtins.fromJSON (builtins.readFile ./config/dns.json);
-          outbounds = builtins.fromJSON (builtins.readFile ./config/outbounds.json);
-          routing = builtins.fromJSON (builtins.readFile ./config/routing.json);
-        in
-        {
-          inherit
-            log
-            dns
-            inbounds
-            outbounds
-            routing
-            ;
-        };
+      settingsFile = configPath;
     };
   };
 }
