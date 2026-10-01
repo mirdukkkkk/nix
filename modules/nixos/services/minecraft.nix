@@ -27,6 +27,38 @@ let
       url = "https://cdn.modrinth.com/data/GOHbQGyX/versions/gnY5Flgo/GSit-3.7.0.jar";
       hash = "sha256-FD04UJ9JxAshSIetPGgsjbf92BxhB4fQGG1l9RJW9NI=";
     };
+    AutoTreeChopper = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/pwCm0TtE/versions/o9SdPqFP/AutoTreeChop-1.7.5.jar";
+      hash = "sha256-30BMqlrWad1JLlC1R7ljheajns28u1NHXbVgZdv4uD4=";
+    };
+    PacketEvents = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/HYKaKraK/versions/m78nFxYg/packetevents-spigot-2.14.0.jar";
+      hash = "sha256-BgCHxY7CaOrn3Q6x8XrDvqHqrdoWk0FBQf9k5QYJG9c=";
+    };
+    AuthMeReloaded = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/9js4IEHC/versions/fPuH4uYs/AuthMe-6.0.1-Paper.jar";
+      hash = "sha256-dwQzXp5zpjTZ2SY0T3eJf0x094+CRTpZ9aoPjSciRQo=";
+    };
+    SkinsRestorer = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/TsLS8Py5/versions/ziIzW16f/SkinsRestorer.jar";
+      hash = "sha256-qFtKNw+Yh0HJo49NBJgmLtrL8yIDFHkKwcEnRhmWNZw=";
+    };
+    HuskHomes = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/J6U9o3JG/versions/eXHdkjXf/HuskHomes-Paper-4.11-9ed80cc.jar";
+      hash = "sha256-hlkURf/8JFM7w+dt5d8Bzd5QARyA2IpF0Os/4SPWF6s=";
+    };
+    Chunky = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/fALzjamp/versions/MdY6JATr/Chunky-Bukkit-1.5.3.jar";
+      hash = "sha256-Uw0sdDCpajmVc5G3CIvhRNqjEI92ZYltHCOqjdSvMvM=";
+    };
+    CoreProtect = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/Lu3KuzdV/versions/3sehX6Sg/CoreProtect-CE-24.1.jar";
+      hash = "sha256-oqzvfAbvIBNVzvB9WRpgVd/tNYrXaPqqqvTidoZezJc=";
+    };
+    WorldEdit = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/1u6JkXh5/versions/F5ea2ov3/worldedit-bukkit-7.4.5.jar";
+      hash = "sha256-5WlqbQZLmWlDeoiIvpGwlBFIoo4MNzbeFVSgAlSl0UI=";
+    };
   };
 
   # Aikar's G1 flags, sized for the 6G heap below.

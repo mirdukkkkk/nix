@@ -6,6 +6,6 @@
 
   services.usbmuxd = {
     enable = true;
-    package = pkgs.usbmuxd;
+    package = pkgs.usbmuxd2;
   };
 }

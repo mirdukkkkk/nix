@@ -24,7 +24,6 @@
       })
       (final: prev: {
         molten = inputs.molten.packages.${prev.stdenv.hostPlatform.system}.default;
-        iloader = inputs.iloader.packages.${prev.stdenv.hostPlatform.system}.default;
         beefetch = inputs.beefetch.packages.${prev.stdenv.hostPlatform.system}.default;
       })
     ];

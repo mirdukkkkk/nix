@@ -1,7 +1,9 @@
 {
   imports = [
     # shell
+    ../../modules/home/shell/direnv.nix
     ../../modules/home/shell/eza.nix
+    ../../modules/home/shell/fzf.nix
     ../../modules/home/shell/tmux.nix
     ../../modules/home/shell/utils.nix
     ../../modules/home/shell/zoxide.nix
@@ -33,6 +35,7 @@
     ../../modules/home/desktop/qbittorrent.nix
     ../../modules/home/desktop/spotify.nix
     ../../modules/home/desktop/telegram.nix
+    ../../modules/home/desktop/tor.nix
     ../../modules/home/desktop/vscode.nix
   ];
 

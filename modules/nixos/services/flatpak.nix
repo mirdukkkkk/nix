@@ -11,6 +11,8 @@
     ];
   };
 
+  preservation.preserveAt."/persist".directories = [ "/var/lib/flatpak" ];
+
   environment.plasma6.excludePackages = [ pkgs.kdePackages.flatpak-kcm ];
 
   systemd.services.flatpak-managed-install.unitConfig.OnSuccess =

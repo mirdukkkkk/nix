@@ -11,7 +11,7 @@ in
   options.my.cli.nix.flake = lib.mkOption {
     type = lib.types.str;
     default = "/etc/nixos";
-    description = "The flake that the nrs and nrb aliases point at.";
+    description = "The flake that nh operates on (exported as NH_FLAKE).";
   };
 
   config = {
@@ -21,12 +21,11 @@ in
       nil
     ];
 
-    home.shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake ${cfg.flake} -L";
-      nrb = "sudo nixos-rebuild boot --flake ${cfg.flake} -L";
+    # Lets `nh os switch` and friends run without a flake path argument.
+    home.sessionVariables.NH_FLAKE = cfg.flake;
 
+    home.shellAliases = {
       nopt = "sudo nix store optimise";
-      nclean = "sudo nix-collect-garbage -d";
 
       nrun = "nix run";
     };

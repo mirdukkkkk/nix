@@ -4,9 +4,15 @@
     preserveAt."/persist" = {
       directories = [
         "/etc/nixos"
-        "/var/lib/nixos"
+        {
+          directory = "/var/lib/nixos";
+          inInitrd = true;
+        }
         "/var/lib/AccountsService"
-        "/var/lib/flatpak"
+        # Last-trigger stamps for `Persistent=true` timers (nix-gc,
+        # nix-optimise, fstrim, btrfs-scrub). Without them every boot looks
+        # like the first one and missed runs are never caught up.
+        "/var/lib/systemd/timers"
       ];
       files = [
         {

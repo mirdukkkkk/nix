@@ -3,17 +3,19 @@
     # nix
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nur.url = "github:nix-community/nur";
-    preservation.url = "github:nix-community/preservation";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = {
+      url = "github:nix-community/nur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    preservation.url = "github:nix-community/preservation";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     # programs
     molten.url = "github:pixelate-it/molten";
-    iloader.url = "github:mirdukkkkk/iloader";
     beefetch.url = "github:mirdukkkkk/beefetch";
     claude-code.url = "github:sadjow/claude-code-nix?ref=v2";
 
@@ -43,7 +45,6 @@
       self,
       nixpkgs,
       nur,
-      iloader,
       preservation,
       nix-flatpak,
       home-manager,
@@ -56,7 +57,6 @@
         modules = [
           ./hosts/miniature
           nur.modules.nixos.default
-          iloader.nixosModules.default
           preservation.nixosModules.preservation
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager

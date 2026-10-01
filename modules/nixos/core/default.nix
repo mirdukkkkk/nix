@@ -6,6 +6,7 @@
     ./locale.nix
     ./nix.nix
     ./nixpkgs.nix
+    ./oomd.nix
     ./security.nix
     ./users.nix
     ./zsh.nix

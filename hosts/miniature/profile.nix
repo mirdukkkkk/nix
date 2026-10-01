@@ -16,6 +16,7 @@
     ../../modules/nixos/desktop/sound.nix
 
     # services
+    ../../modules/nixos/services/btrfs.nix
     ../../modules/nixos/services/flatpak.nix
     ../../modules/nixos/services/fstrim.nix
     ../../modules/nixos/services/lact.nix

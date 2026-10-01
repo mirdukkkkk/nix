@@ -9,10 +9,13 @@
     clock24 = true;
 
     # Set terminal type
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
 
     # Additional tmux configuration
     extraConfig = ''
+      # Pass kitty's 24-bit color through to programs inside tmux
+      set -as terminal-features ",xterm-kitty:RGB"
+
       # Remove keybindings to resize panes
       unbind C-Up
       unbind M-Up
