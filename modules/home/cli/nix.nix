@@ -24,12 +24,6 @@ in
     # Lets `nh os switch` and friends run without a flake path argument.
     home.sessionVariables.NH_FLAKE = cfg.flake;
 
-    home.shellAliases = {
-      nopt = "sudo nix store optimise";
-
-      nrun = "nix run";
-    };
-
     programs.vscode.profiles.default = {
       extensions = with pkgs.vscode-extensions; [
         bbenoist.nix

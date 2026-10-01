@@ -15,9 +15,18 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     # programs
-    molten.url = "github:pixelate-it/molten";
-    beefetch.url = "github:mirdukkkkk/beefetch";
-    claude-code.url = "github:sadjow/claude-code-nix?ref=v2";
+    molten = {
+      url = "github:pixelate-it/molten";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    beefetch = {
+      url = "github:mirdukkkkk/beefetch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    claude-code = {
+      url = "github:sadjow/claude-code-nix?ref=v2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # firefox
     betterfox = {
