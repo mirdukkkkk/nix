@@ -9,7 +9,7 @@
     ../../modules/home/shell/zoxide.nix
 
     # cli
-    ../../modules/home/cli/claude.nix
+    ../../modules/home/cli/claude
     ../../modules/home/cli/fetch.nix
     ../../modules/home/cli/git.nix
     ../../modules/home/cli/monitoring.nix
