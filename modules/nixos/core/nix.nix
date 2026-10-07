@@ -1,7 +1,10 @@
 {
   nix = {
     settings = {
-      max-jobs = "auto";
+      # 2 parallel builds x 6 cores = 12 threads total. "auto" + cores=0 ran
+      # 12 builds that each grabbed all 12 threads, starving the desktop.
+      max-jobs = 2;
+      cores = 6;
       auto-optimise-store = true;
       experimental-features = [
         "nix-command"
@@ -20,6 +23,10 @@
 
       #trusted-users = [ "root" "mirdukkkkk" ];
     };
+
+    # Builds only get CPU/IO time the desktop isn't using.
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedClass = "idle";
 
     optimise = {
       automatic = false;

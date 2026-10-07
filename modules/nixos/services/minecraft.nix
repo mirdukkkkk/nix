@@ -66,6 +66,7 @@ let
     "-Xms6G"
     "-Xmx6G"
     "-XX:+AlwaysPreTouch"
+    "-XX:+UseTransparentHugePages"
     "-XX:+UseG1GC"
     "-XX:+ParallelRefProcEnabled"
     "-XX:MaxGCPauseMillis=200"

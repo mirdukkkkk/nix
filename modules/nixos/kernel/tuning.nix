@@ -1,9 +1,14 @@
 {
+  # sched_ext scheduler tuned for interactivity; replaces autogroup, which
+  # only applies under the in-kernel fair scheduler.
+  services.scx = {
+    enable = true;
+    scheduler = "scx_lavd";
+  };
+
   boot.kernel.sysctl = {
     "net.core.rmem_max" = 16777216;
     "net.core.wmem_max" = 16777216;
-
-    "kernel.sched_autogroup_enabled" = 1;
 
     "vm.min_free_kbytes" = 262144;
 
