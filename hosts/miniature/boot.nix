@@ -17,6 +17,7 @@
     extraModulePackages = [ ];
 
     kernelParams = [
+      "preempt=full"
       "threadirqs"
       "nowatchdog"
       "mitigations=off"

@@ -30,4 +30,7 @@
     kolourpaint
     kdenlive
   ];
+
+  # accounts-daemon, pulled in by Plasma, keeps per-user avatar and language
+  preservation.preserveAt."/persist".directories = [ "/var/lib/AccountsService" ];
 }

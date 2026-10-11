@@ -26,6 +26,7 @@
     # desktop
     ../../modules/home/desktop/bottles.nix
     ../../modules/home/desktop/chrome.nix
+    ../../modules/home/desktop/creality-print.nix
     ../../modules/home/desktop/discord.nix
     ../../modules/home/desktop/firefox
     ../../modules/home/desktop/flameshot.nix

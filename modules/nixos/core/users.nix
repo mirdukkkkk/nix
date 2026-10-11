@@ -31,4 +31,13 @@
       };
     };
   };
+
+  # uid/gid allocations for every user and group; losing them on the tmpfs
+  # root can hand an old uid's files to a different account after reboot
+  preservation.preserveAt."/persist".directories = [
+    {
+      directory = "/var/lib/nixos";
+      inInitrd = true;
+    }
+  ];
 }
