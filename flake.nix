@@ -35,10 +35,6 @@
     };
 
     # claude skills/plugins
-    caveman = {
-      url = "github:JuliusBrussee/caveman";
-      flake = false;
-    };
     security-audit-skill = {
       url = "github:cloudflare/security-audit-skill";
       flake = false;
