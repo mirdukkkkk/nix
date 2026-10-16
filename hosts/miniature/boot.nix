@@ -1,8 +1,22 @@
+{ config, pkgs, ... }:
+let
+  # TODO: drop once nixpkgs bumps nct6687d past the strncpy -> strscpy fix;
+  # the pinned 2026-03-13 snapshot fails to build against Linux 7.2.
+  nct6687d = config.boot.kernelPackages.nct6687d.overrideAttrs {
+    version = "0-unstable-2026-10-13";
+    src = pkgs.fetchFromGitHub {
+      owner = "Fred78290";
+      repo = "nct6687d";
+      rev = "060728e8d04e3ee17b5e003a53e0bcb34c60de92";
+      hash = "sha256-qAAIwX+R14cMjY9UUO7bfBJDpqrNpILmJg/IW5tOPZ4=";
+    };
+  };
+in
 {
   boot = {
     initrd = {
       availableKernelModules = [
-        "ehci_pci"
+        "xhci_pci"
         "ahci"
         "nvme"
         "usb_storage"
@@ -13,19 +27,19 @@
       systemd.enable = true;
     };
 
-    kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    kernelModules = [
+      "kvm-amd"
+      # MSI B550 super I/O: fan speeds and board temperatures
+      "nct6687"
+    ];
+    extraModulePackages = [ nct6687d ];
 
     kernelParams = [
       "preempt=full"
       "threadirqs"
       "nowatchdog"
-      "mitigations=off"
-      "split_lock_detect=off"
-      "nvme_core.io_timeout=30"
-      "nvme_core.default_ps_max_latency_us=0"
-      "init_on_alloc=0"
-      "pci=realloc"
+      # Zen 3 has CPPC; pin the EPP driver instead of relying on the kernel default
+      "amd_pstate=active"
       "random.trust_cpu=0"
       #"nohz_full=1-11"
     ];
@@ -47,16 +61,4 @@
       tmpfsSize = "50%";
     };
   };
-
-  # `nowatchdog` above only disables the softlockup/NMI lockup detector, not
-  # the discrete hardware watchdog timers (iTCO_wdt, intel_oc_wdt) this board
-  # exposes as /dev/watchdog*. systemd's own upstream default arms whichever
-  # one it finds for 10min as a shutdown-hang safety net, then can't always
-  # cleanly disarm iTCO_wdt on close -- hence "watchdog did not stop!" on
-  # every shutdown/reboot. Disabling this rearms nothing, so the message
-  # never fires. Set on both systemd instances: the initrd one runs the
-  # final unmount-real-root stage of shutdown (boot.initrd.systemd.enable
-  # above), so it can independently re-arm the same watchdog if left alone.
-  systemd.settings.Manager.RebootWatchdogSec = "0";
-  boot.initrd.systemd.settings.Manager.RebootWatchdogSec = "0";
 }

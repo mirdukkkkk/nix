@@ -3,7 +3,7 @@
   # only applies under the in-kernel fair scheduler.
   # --performance turns off core compaction: packing tasks onto fewer cores
   # only saves power on hybrid/laptop CPUs, while on this homogeneous
-  # desktop Xeon it just adds wake-up latency when load spikes.
+  # desktop Ryzen (one CCD, 8 equal cores) it just adds wake-up latency when load spikes.
   services.scx = {
     enable = true;
     scheduler = "scx_lavd";
