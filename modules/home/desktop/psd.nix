@@ -4,7 +4,7 @@
     resyncTimer = "10min";
     browsers = [
       "firefox"
-      "google-chrome"
+      "chromium"
     ];
   };
 }
