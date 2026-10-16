@@ -29,13 +29,18 @@ in
     settings = {
       model = "opus";
       theme = "dark";
+      tui = "fullscreen";
       effortLevel = "high";
       includeCoAuthoredBy = false;
       awaySummaryEnabled = false;
       agentPushNotifEnabled = true;
 
+      # Not CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC / DISABLE_TELEMETRY:
+      # both turn off GrowthBook feature flags, which Remote Control needs
       env = {
-        CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1";
+        DISABLE_ERROR_REPORTING = "1";
+        DISABLE_BUG_COMMAND = "1";
+        DISABLE_FEEDBACK_COMMAND = "1";
       };
 
       permissions = {
