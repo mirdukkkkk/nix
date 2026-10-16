@@ -1,10 +1,10 @@
 {
   nix = {
     settings = {
-      # 2 parallel builds x 6 cores = 12 threads total. "auto" + cores=0 ran
-      # 12 builds that each grabbed all 12 threads, starving the desktop.
+      # 2 parallel builds x 8 cores = 16 threads total. "auto" + cores=0 ran
+      # one build per thread that each grabbed all of them, starving the desktop.
       max-jobs = 2;
-      cores = 6;
+      cores = 8;
       auto-optimise-store = true;
       experimental-features = [
         "nix-command"
