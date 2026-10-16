@@ -1,5 +1,19 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 let
+  security-audit-skill = pkgs.fetchFromGitHub {
+    owner = "cloudflare";
+    repo = "security-audit-skill";
+    rev = "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8";
+    hash = "sha256-oVVACjotkHvllQGxEP8yWaEt4c3GxT0d909TUM5P3NM=";
+  };
+
+  ascii-art-skill = pkgs.fetchFromGitHub {
+    owner = "mirdukkkkk";
+    repo = "ascii-art";
+    rev = "403a76f0f67660902eae6552bd8afbabe32d34ad";
+    hash = "sha256-Nb5nmdN4mjTMRhWhFFHUtR3unE4rSmixkvZnu9qDDeI=";
+  };
+
   statusLine = pkgs.writeShellApplication {
     name = "claude-statusline";
     runtimeInputs = [
@@ -68,8 +82,8 @@ in
     };
 
     skills = {
-      security-audit = "${inputs.security-audit-skill}/skills/security-audit";
-      ascii-art = "${inputs.ascii-art}";
+      security-audit = "${security-audit-skill}/skills/security-audit";
+      ascii-art = "${ascii-art-skill}";
     };
 
     agents.race-hunter = ./agents/race-hunter.md;

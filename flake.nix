@@ -33,16 +33,6 @@
       url = "github:yokoffing/betterfox";
       flake = false;
     };
-
-    # claude skills/plugins
-    security-audit-skill = {
-      url = "github:cloudflare/security-audit-skill";
-      flake = false;
-    };
-    ascii-art = {
-      url = "github:mirdukkkkk/ascii-art";
-      flake = false;
-    };
   };
 
   outputs =

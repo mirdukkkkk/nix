@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "ascii-art": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1789586510,
-        "narHash": "sha256-Nb5nmdN4mjTMRhWhFFHUtR3unE4rSmixkvZnu9qDDeI=",
-        "owner": "mirdukkkkk",
-        "repo": "ascii-art",
-        "rev": "403a76f0f67660902eae6552bd8afbabe32d34ad",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mirdukkkkk",
-        "repo": "ascii-art",
-        "type": "github"
-      }
-    },
     "beefetch": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -259,7 +243,6 @@
     },
     "root": {
       "inputs": {
-        "ascii-art": "ascii-art",
         "beefetch": "beefetch",
         "betterfox": "betterfox",
         "claude-code": "claude-code",
@@ -269,24 +252,7 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
-        "preservation": "preservation",
-        "security-audit-skill": "security-audit-skill"
-      }
-    },
-    "security-audit-skill": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1789414134,
-        "narHash": "sha256-oVVACjotkHvllQGxEP8yWaEt4c3GxT0d909TUM5P3NM=",
-        "owner": "cloudflare",
-        "repo": "security-audit-skill",
-        "rev": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cloudflare",
-        "repo": "security-audit-skill",
-        "type": "github"
+        "preservation": "preservation"
       }
     },
     "systems": {
