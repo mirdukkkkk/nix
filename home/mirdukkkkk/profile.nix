@@ -24,7 +24,7 @@
     ../../modules/home/dev/python.nix
 
     # desktop
-    ../../modules/home/desktop/chrome.nix
+    ../../modules/home/desktop/chromium.nix
     ../../modules/home/desktop/creality-print.nix
     ../../modules/home/desktop/discord.nix
     ../../modules/home/desktop/firefox
