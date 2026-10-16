@@ -100,6 +100,7 @@ in
         # Input / misc UX
         "general.autoScroll" = true;
         "middlemouse.paste" = false;
+        "browser.tabs.allowTabDetach" = false;
       };
 
       extensions.packages = nur-extensions ++ (builtins.attrValues generated-extensions);
