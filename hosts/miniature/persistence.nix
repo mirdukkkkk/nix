@@ -4,6 +4,8 @@
     preserveAt."/persist" = {
       directories = [
         "/var/lib/systemd/timers"
+        # Secure Boot keys used by lanzaboote
+        "/var/lib/sbctl"
       ];
       files = [
         {

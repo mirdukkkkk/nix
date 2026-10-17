@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   # TODO: drop once nixpkgs bumps nct6687d past the strncpy -> strscpy fix;
   # the pinned 2026-03-13 snapshot fails to build against Linux 7.2.
@@ -47,11 +52,17 @@ in
     loader = {
       timeout = 3;
       efi.canTouchEfiVariables = true;
+      # replaced by lanzaboote, which signs systemd-boot and UKIs for Secure Boot
       systemd-boot = {
-        enable = true;
-        configurationLimit = 10;
+        enable = lib.mkForce false;
         consoleMode = "max";
       };
+    };
+
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+      configurationLimit = 10;
     };
 
     tmp = {
@@ -61,4 +72,6 @@ in
       tmpfsSize = "50%";
     };
   };
+
+  environment.systemPackages = [ pkgs.sbctl ];
 }
