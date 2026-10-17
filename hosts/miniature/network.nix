@@ -3,7 +3,7 @@
     useDHCP = false;
     dhcpcd.enable = false;
 
-    interfaces.enp7s0 = {
+    interfaces.enp42s0 = {
       ipv4.addresses = [
         {
           address = "192.168.1.100";
