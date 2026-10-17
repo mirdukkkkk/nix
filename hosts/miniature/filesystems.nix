@@ -1,3 +1,21 @@
+let
+  # btrfs applies its own mount options (compress, nodatacow, discard, ...)
+  # filesystem-wide, taken from whichever subvolume is mounted first; per-mount
+  # values on the other subvolumes are silently ignored. So every subvolume
+  # gets the same set, and the only per-mount difference is the subvol itself
+  # (noatime is a VFS option and genuinely works per mount).
+  disk = "/dev/disk/by-uuid/aae3be35-04cf-4565-b5b0-394b76a7889d";
+  options = [
+    "noatime"
+    "discard=async"
+    "compress=zstd:3"
+  ];
+  subvol = name: {
+    device = disk;
+    fsType = "btrfs";
+    options = [ "subvol=${name}" ] ++ options;
+  };
+in
 {
   fileSystems."/" = {
     fsType = "tmpfs";
@@ -7,28 +25,12 @@
     ];
   };
 
-  fileSystems."/persist" = {
-    device = "/dev/disk/by-uuid/aae3be35-04cf-4565-b5b0-394b76a7889d";
-    fsType = "btrfs";
-    options = [
-      "subvol=@persist"
-      "noatime"
-      "discard=async"
-      "compress=zstd:3"
-    ];
-    neededForBoot = true;
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/aae3be35-04cf-4565-b5b0-394b76a7889d";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nix"
-      "noatime"
-      "discard=async"
-      "compress-force=zstd:3"
-    ];
-  };
+  fileSystems."/persist" = subvol "@persist" // { neededForBoot = true; };
+  fileSystems."/nix" = subvol "@nix";
+  fileSystems."/home" = subvol "@home";
+  fileSystems."/var/log" = subvol "@log";
+  fileSystems."/var/lib/docker" = subvol "@docker";
+  fileSystems."/var/lib/minecraft" = subvol "@minecraft";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/E3E7-1149";
@@ -39,49 +41,12 @@
     ];
   };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/aae3be35-04cf-4565-b5b0-394b76a7889d";
-    fsType = "btrfs";
-    options = [
-      "subvol=@home"
-      "noatime"
-      "discard=async"
-      "compress=zstd:3"
-    ];
-  };
-
-  fileSystems."/var/log" = {
-    device = "/dev/disk/by-uuid/aae3be35-04cf-4565-b5b0-394b76a7889d";
-    fsType = "btrfs";
-    options = [
-      "subvol=@log"
-      "noatime"
-      "discard=async"
-      "compress=zstd:1"
-    ];
-  };
-
-  fileSystems."/var/lib/docker" = {
-    device = "/dev/disk/by-uuid/aae3be35-04cf-4565-b5b0-394b76a7889d";
-    fsType = "btrfs";
-    options = [
-      "subvol=@docker"
-      "noatime"
-      "discard=async"
-      "nodatacow"
-    ];
-  };
-
-  fileSystems."/var/lib/minecraft" = {
-    device = "/dev/disk/by-uuid/aae3be35-04cf-4565-b5b0-394b76a7889d";
-    fsType = "btrfs";
-    options = [
-      "subvol=@minecraft"
-      "noatime"
-      "discard=async"
-      "nodatacow"
-    ];
-  };
+  # nodatacow can't be set per subvolume via mount options (see above), so
+  # use the file attribute instead. +C only applies to files created after
+  # it is set on the directory; existing files keep CoW until rewritten.
+  systemd.tmpfiles.rules = [
+    "h /var/lib/docker    - - - - +C"
+  ];
 
   swapDevices = [
     {
