@@ -21,11 +21,7 @@
     "net.core.default_qdisc" = "fq";
     "net.core.netdev_max_backlog" = 8192;
 
-    # zram (prio 150) absorbs almost all swapping before the disk swap
-    # (prio -1) is ever touched, so lean on it -- but not too hard: zram
-    # compression rides the memory bus, and this board runs RAM single
-    # channel (bad motherboard), so bandwidth is already scarce.
-    "vm.swappiness" = 100;
+    "vm.swappiness" = 150;
     "vm.watermark_boost_factor" = 0;
     "vm.watermark_scale_factor" = 50;
     "vm.page-cluster" = 0;
