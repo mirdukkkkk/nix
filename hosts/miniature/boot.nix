@@ -30,6 +30,16 @@ in
       ];
       kernelModules = [ ];
       systemd.enable = true;
+
+      # btrfs keeps its own UUID inside, so filesystems.nix still mounts it by-uuid
+      luks.devices.cryptroot = {
+        device = "/dev/disk/by-uuid/551b91fb-3640-4b19-9476-354066c37036";
+        crypttabExtraOpts = [ "tpm2-device=auto" ];
+        # let discard=async reach the NVMe through dm-crypt
+        allowDiscards = true;
+        # skip dm-crypt's kernel workqueues: lower latency on NVMe with AES-NI
+        bypassWorkqueues = true;
+      };
     };
 
     kernelModules = [
