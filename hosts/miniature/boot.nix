@@ -50,7 +50,7 @@ in
     ];
 
     loader = {
-      timeout = 3;
+      timeout = 5;
       efi.canTouchEfiVariables = true;
       # replaced by lanzaboote, which signs systemd-boot and UKIs for Secure Boot
       systemd-boot = {
