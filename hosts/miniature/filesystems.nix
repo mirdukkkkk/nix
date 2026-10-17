@@ -25,7 +25,9 @@ in
     ];
   };
 
-  fileSystems."/persist" = subvol "@persist" // { neededForBoot = true; };
+  fileSystems."/persist" = subvol "@persist" // {
+    neededForBoot = true;
+  };
   fileSystems."/nix" = subvol "@nix";
   fileSystems."/home" = subvol "@home";
   fileSystems."/var/log" = subvol "@log";
@@ -50,9 +52,16 @@ in
 
   swapDevices = [
     {
-      device = "/dev/disk/by-uuid/6a050789-15f0-4d15-866a-da30c65794a0";
+      # by-partuuid, not by-uuid: randomEncryption re-creates the swap with a
+      # fresh key every boot, so the filesystem UUID doesn't survive.
+      device = "/dev/disk/by-partuuid/28df634f-ae77-4623-a528-9dcda6f9f576";
       priority = -1;
       discardPolicy = "pages";
+      randomEncryption = {
+        enable = true;
+        # let discardPolicy reach the NVMe through dm-crypt
+        allowDiscards = true;
+      };
     }
   ];
 
