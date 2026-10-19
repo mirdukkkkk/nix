@@ -91,6 +91,10 @@ in
         "extensions.update.autoUpdateDefault" = false;
         "extensions.update.enabled" = false;
 
+        # Downloads: 2 = use browser.download.dir instead of ~/Downloads.
+        "browser.download.folderList" = 2;
+        "browser.download.dir" = "/srv/nfs/downloads";
+
         # Devtools
         # Enables the Browser Console (privileged JS context) for extension/UI debugging.
         "devtools.chrome.enabled" = true;
