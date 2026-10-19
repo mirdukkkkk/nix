@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    iloader
+    unstable.iloader
   ];
 
   services.usbmuxd = {
