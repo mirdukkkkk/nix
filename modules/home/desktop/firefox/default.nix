@@ -6,6 +6,7 @@
 }:
 let
   rycee = pkgs.nur.repos.rycee;
+  mirdukkkkk = pkgs.nur.repos.mirdukkkkk;
 
   betterfox = inputs.betterfox;
 
@@ -17,16 +18,14 @@ let
     sponsorblock
     ublock-origin
   ];
-  generated-extensions = import ./extensions.nix {
-    buildMozillaXpiAddon = rycee.lib.mozilla.mkBuildMozillaXpiAddon {
-      inherit (pkgs) fetchurl stdenv;
-    };
-    inherit (pkgs) fetchurl lib stdenv;
-  };
+  honeycomb-extensions = with mirdukkkkk.firefox-addons; [
+    indicatetls
+    media-harvest
+    preact-devtools
+    resourceoverride
+  ];
 in
 {
-  home.packages = [ rycee.mozilla-addons-to-nix ];
-
   programs.firefox = {
     enable = true;
     configPath = ".mozilla/firefox";
@@ -36,6 +35,8 @@ in
     policies = {
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
+      # Add-ons come from Nix; stops self-updating ones (e.g. media-harvest's update_url).
+      ExtensionUpdate = false;
     };
     profiles.mrdk = {
       isDefault = true;
@@ -103,7 +104,7 @@ in
         "browser.tabs.allowTabDetach" = false;
       };
 
-      extensions.packages = nur-extensions ++ (builtins.attrValues generated-extensions);
+      extensions.packages = nur-extensions ++ honeycomb-extensions;
     };
   };
 }

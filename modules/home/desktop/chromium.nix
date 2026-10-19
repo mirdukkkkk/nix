@@ -17,7 +17,7 @@
       { id = "fcoeoabgfenejglbffodgkkbkcdhcgfn"; } # claude
       { id = "ilcajpmogmhpliinlbcdebhbcanbghmd"; } # preact developer tools
       { id = "aapbdbdomjkkjkaonfhkkikfgjllcleb"; } # google translate
-      { id = "dcpelmafllhhdcbiegigphjnbgnolkgm"; } # x/twitter content backup tool
+      { id = "hpcgabhdlnapolkkjpejieegfpehfdok"; } # media harvest
       { id = "epcnnfbjfcgphgdmggkamkmgojdagdnn"; } # ublock
       { id = "cimiefiiaegbelhefglklhhakcgmhkai"; } # plasma integration
     ];
