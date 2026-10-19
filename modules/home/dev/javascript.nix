@@ -1,7 +1,10 @@
 { pkgs, config, ... }:
 {
   home = {
-    packages = [ pkgs.yarn pkgs.pnpm ];
+    packages = [
+      pkgs.yarn
+      pkgs.pnpm
+    ];
     sessionPath = [ "${config.xdg.dataHome}/npm/bin" ];
   };
 
