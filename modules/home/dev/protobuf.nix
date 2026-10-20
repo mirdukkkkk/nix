@@ -1,17 +1,9 @@
-{ pkgs, lib, ... }:
-let
-  protobuf-vsc = pkgs.vscode-utils.extensionFromVscodeMarketplace {
-    name = "protobuf-vsc";
-    publisher = "DrBlury";
-    version = "1.6.14";
-    sha256 = "sha256-wup+gWozELTO6jcNF5HZR1oRRwnGMor/PuEtdpRGz8g=";
-  };
-in
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [ buf ];
 
   programs.vscode.profiles.default = {
-    extensions = [ protobuf-vsc ];
+    extensions = with pkgs.vscode-extensions; [ drblury.protobuf-vsc ];
 
     # Its bundled formatter's indent defaults are undocumented and would
     # fight this repo's 4-space convention (see pixel.proto), so keep

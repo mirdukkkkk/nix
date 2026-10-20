@@ -5,24 +5,21 @@
   ...
 }:
 let
-  rycee = pkgs.nur.repos.rycee;
   mirdukkkkk = pkgs.nur.repos.mirdukkkkk;
 
   betterfox = inputs.betterfox;
 
-  nur-extensions = with rycee.firefox-addons; [
+  extensions = with mirdukkkkk.firefox-addons; [
     cookie-editor
     flagfox
-    plasma-integration
-    reduxdevtools
-    sponsorblock
-    ublock-origin
-  ];
-  honeycomb-extensions = with mirdukkkkk.firefox-addons; [
     indicatetls
     media-harvest
+    plasma-integration
     preact-devtools
+    reduxdevtools
     resourceoverride
+    sponsorblock
+    ublock-origin
   ];
 in
 {
@@ -108,7 +105,7 @@ in
         "browser.tabs.allowTabDetach" = false;
       };
 
-      extensions.packages = nur-extensions ++ honeycomb-extensions;
+      extensions.packages = extensions;
     };
   };
 }
