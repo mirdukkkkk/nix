@@ -56,6 +56,7 @@ in
       "nowatchdog"
       "amd_pstate=active"
       "random.trust_cpu=0"
+      "usbcore.quirks=046d:c53f:g"
     ];
 
     loader = {
