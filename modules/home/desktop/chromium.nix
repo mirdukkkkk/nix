@@ -1,4 +1,28 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
+let
+  claudeExtension = "fcoeoabgfenejglbffodgkkbkcdhcgfn";
+
+  # Claude in Chrome talks to Claude Code through this host. Claude Code can
+  # write one itself, but outside home-manager; declared here it runs the
+  # same package programs.claude-code installs.
+  claudeHost =
+    let
+      host = pkgs.writeShellScript "claude-chrome-native-host" ''
+        exec ${config.programs.claude-code.package}/bin/claude --chrome-native-host
+      '';
+    in
+    pkgs.writeTextDir
+      "etc/chromium/native-messaging-hosts/com.anthropic.claude_code_browser_extension.json"
+      (
+        builtins.toJSON {
+          name = "com.anthropic.claude_code_browser_extension";
+          description = "Claude Code Browser Extension Native Host";
+          path = "${host}";
+          type = "stdio";
+          allowed_origins = [ "chrome-extension://${claudeExtension}/" ];
+        }
+      );
+in
 {
   programs.chromium = {
     enable = true;
@@ -11,10 +35,13 @@
 
     # home-manager's plasmaSupport only covers google-chrome,
     # so the plasma integration host is added by hand.
-    nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ];
+    nativeMessagingHosts = [
+      pkgs.kdePackages.plasma-browser-integration
+      claudeHost
+    ];
 
     extensions = [
-      { id = "fcoeoabgfenejglbffodgkkbkcdhcgfn"; } # claude
+      { id = claudeExtension; } # claude
       { id = "ilcajpmogmhpliinlbcdebhbcanbghmd"; } # preact developer tools
       { id = "aapbdbdomjkkjkaonfhkkikfgjllcleb"; } # google translate
       { id = "hpcgabhdlnapolkkjpejieegfpehfdok"; } # media harvest
