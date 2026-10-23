@@ -19,10 +19,6 @@
     };
 
     # programs
-    molten = {
-      url = "github:pixelate-it/molten";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     beefetch = {
       url = "github:mirdukkkkk/beefetch";
       inputs.nixpkgs.follows = "nixpkgs";

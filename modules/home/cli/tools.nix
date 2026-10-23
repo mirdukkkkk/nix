@@ -3,6 +3,6 @@
   home.packages = with pkgs; [
     ffmpeg
 
-    molten
+    nur.repos.mirdukkkkk.molten
   ];
 }
