@@ -7,13 +7,15 @@
 let
   # TODO: drop once nixpkgs bumps nct6687d past the strncpy -> strscpy fix;
   # the pinned 2026-03-13 snapshot fails to build against Linux 7.2.
+
+  # https://github.com/NixOS/nixpkgs/pull/565042
   nct6687d = config.boot.kernelPackages.nct6687d.overrideAttrs {
-    version = "0-unstable-2026-10-13";
+    version = "0-unstable-2026-10-18";
     src = pkgs.fetchFromGitHub {
       owner = "Fred78290";
       repo = "nct6687d";
-      rev = "060728e8d04e3ee17b5e003a53e0bcb34c60de92";
-      hash = "sha256-qAAIwX+R14cMjY9UUO7bfBJDpqrNpILmJg/IW5tOPZ4=";
+      rev = "7e3d7b36c55f06ab5bb2077bc85329f592996b2a";
+      hash = "sha256-Z/7lkvtg+1bKkobaAdUAYGQdRgvbWbKNradIv4MTA30=";
     };
   };
 in
@@ -44,7 +46,6 @@ in
 
     kernelModules = [
       "kvm-amd"
-      # MSI B550 super I/O: fan speeds and board temperatures
       "nct6687"
     ];
     extraModulePackages = [ nct6687d ];
@@ -53,10 +54,8 @@ in
       "preempt=full"
       "threadirqs"
       "nowatchdog"
-      # Zen 3 has CPPC; pin the EPP driver instead of relying on the kernel default
       "amd_pstate=active"
       "random.trust_cpu=0"
-      #"nohz_full=1-11"
     ];
 
     loader = {
