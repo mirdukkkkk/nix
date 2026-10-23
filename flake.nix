@@ -19,10 +19,6 @@
     };
 
     # programs
-    beefetch = {
-      url = "github:mirdukkkkk/beefetch";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     claude-code = {
       url = "github:sadjow/claude-code-nix?ref=v2";
       inputs.nixpkgs.follows = "nixpkgs";

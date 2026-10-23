@@ -22,9 +22,6 @@
               old.buildCommand;
         });
       })
-      (final: prev: {
-        beefetch = inputs.beefetch.packages.${prev.stdenv.hostPlatform.system}.default;
-      })
     ];
   };
 }

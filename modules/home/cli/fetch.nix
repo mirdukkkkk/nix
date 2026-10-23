@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ beefetch ];
+  home.packages = with pkgs; [ nur.repos.mirdukkkkk.beefetch ];
 
   programs.fastfetch = {
     enable = true;
