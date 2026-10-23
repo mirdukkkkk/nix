@@ -16,6 +16,27 @@ let
     cp ${roscomvpn-geosite} $out/share/v2ray/geosite.ru.dat
   '';
 
+  # Pinned newer than nixpkgs. `assets` goes through `override` (it is a
+  # callPackage argument), the version bump through `overrideAttrs`.
+  xray =
+    (pkgs.unstable.xray.override {
+      assets = [
+        pkgs.unstable.v2ray-geoip
+        pkgs.unstable.v2ray-domain-list-community
+        roscomvpn-assets
+      ];
+    }).overrideAttrs
+      (finalAttrs: {
+        version = "26.10.21";
+        src = pkgs.fetchFromGitHub {
+          owner = "XTLS";
+          repo = "Xray-core";
+          rev = "v${finalAttrs.version}";
+          hash = "sha256-1FwcB/qZaH7W9b+GSe+CG/s+uStaDjz792OxDc3uAyg=";
+        };
+        vendorHash = "sha256-o4mKfCGgI4r5ZatnA4AsK4zR0/qOl2qpqCmoJmE2jBQ=";
+      });
+
   configPath = "/etc/xray/config.json";
 in
 {
@@ -43,13 +64,7 @@ in
 
     services.xray = {
       enable = true;
-      package = pkgs.unstable.xray.override {
-        assets = [
-          pkgs.unstable.v2ray-geoip
-          pkgs.unstable.v2ray-domain-list-community
-          roscomvpn-assets
-        ];
-      };
+      package = xray;
       settingsFile = configPath;
     };
   };
