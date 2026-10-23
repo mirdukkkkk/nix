@@ -2,13 +2,13 @@
 { unstable }:
 unstable.iloader.overrideAttrs (
   finalAttrs: old: {
-    version = "2.3.10";
+    version = "2.4.0";
 
     src = unstable.fetchFromGitHub {
       owner = "nab138";
       repo = "iloader";
       rev = "v${finalAttrs.version}";
-      hash = "sha256-/EdansvwPZN9a49I/NuVROfnGwRtpa/XBnSUGF8b95g=";
+      hash = "sha256-fiMLl0OkG9/+T/gEIAeK23TrPOQzm5e0yk6oX9VFsr8=";
     };
 
     nodeModules = old.nodeModules.overrideAttrs {
@@ -19,7 +19,7 @@ unstable.iloader.overrideAttrs (
     cargoDeps = unstable.rustPlatform.fetchCargoVendor {
       inherit (finalAttrs) pname version src;
       sourceRoot = "${finalAttrs.src.name}/src-tauri";
-      hash = "sha256-FLhisKy+vu0/ogKn8pPL0NB1vHephQtAMzQ7NWgwoEs=";
+      hash = "sha256-hn+TQtDLs8/JA/XH4w8rPjC7vujJ1OzX5k80koeZ2s8=";
     };
   }
 )
