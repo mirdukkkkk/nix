@@ -44,7 +44,6 @@ in
       { id = claudeExtension; } # claude
       { id = "ilcajpmogmhpliinlbcdebhbcanbghmd"; } # preact developer tools
       { id = "aapbdbdomjkkjkaonfhkkikfgjllcleb"; } # google translate
-      { id = "hpcgabhdlnapolkkjpejieegfpehfdok"; } # media harvest
       { id = "epcnnfbjfcgphgdmggkamkmgojdagdnn"; } # ublock
       { id = "cimiefiiaegbelhefglklhhakcgmhkai"; } # plasma integration
     ];
