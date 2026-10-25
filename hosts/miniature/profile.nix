@@ -19,8 +19,10 @@
     ../../modules/nixos/services/btrfs.nix
     ../../modules/nixos/services/flatpak.nix
     ../../modules/nixos/services/fstrim.nix
+    ../../modules/nixos/services/fwupd.nix
     ../../modules/nixos/services/lact.nix
     ../../modules/nixos/services/ratbagd.nix
+    ../../modules/nixos/services/smartd.nix
     ../../modules/nixos/services/xray
   ];
 
