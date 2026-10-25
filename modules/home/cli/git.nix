@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.git = {
     enable = true;
     lfs.enable = true;
     settings = {
       user = {
-        email = "karmulav@gmail.com";
+        email = config.my.identity.email;
         name = "mirdukkkkk";
         signingkey = "~/.ssh/id_ed25519.pub";
       };
