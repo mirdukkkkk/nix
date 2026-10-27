@@ -6,13 +6,12 @@
     fd
     duf
     dust
-    bottom
   ];
 
   home.shellAliases = {
     cat = "bat";
 
-    top = "btm";
+    top = "btop";
 
     #grep = "rg";
     #find = "fd";
