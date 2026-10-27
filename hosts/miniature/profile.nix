@@ -1,7 +1,6 @@
 {
   imports = [
     # core
-    #../../modules/nixos/core/ld.nix
     ../../modules/nixos/core/zram.nix
 
     # kernel
