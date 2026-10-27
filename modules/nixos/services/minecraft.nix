@@ -12,12 +12,12 @@ let
   paper =
     (pkgs.callPackage "${pkgs.path}/pkgs/games/papermc/derivation.nix" {
       jre = pkgs.javaPackages.compiler.temurin-bin.jre-25;
-      version = "26.2-128";
-      hash = "sha256-he/WeawbXAEzqlPqQiL83GW4pbDX9OhUl7ZHR/GWNKo=";
+      version = "26.2-135";
+      hash = "sha256-7z28aLAT3q/bvuO+vxujUWcevNqUqPE2gJt1MtW6L+E=";
     }).overrideAttrs
       (old: {
         src = pkgs.fetchurl {
-          url = "https://fill-data.papermc.io/v1/objects/85efd679ac1b5c0133aa53ea4222fcdc65b8a5b0d7f4e85497b64747f19634aa/paper-26.2-128.jar";
+          url = "https://fill-data.papermc.io/v1/objects/ef3dbc68b013deafdbbee3bebf1ba351671ebcda94a8f136809b7532d5ba2fe1/paper-26.2-135.jar";
           inherit (old) hash;
         };
       });
@@ -27,9 +27,9 @@ let
       url = "https://cdn.modrinth.com/data/GOHbQGyX/versions/gnY5Flgo/GSit-3.7.0.jar";
       hash = "sha256-FD04UJ9JxAshSIetPGgsjbf92BxhB4fQGG1l9RJW9NI=";
     };
-    AutoTreeChopper = pkgs.fetchurl {
-      url = "https://cdn.modrinth.com/data/pwCm0TtE/versions/o9SdPqFP/AutoTreeChop-1.7.5.jar";
-      hash = "sha256-30BMqlrWad1JLlC1R7ljheajns28u1NHXbVgZdv4uD4=";
+    TreeFeller = pkgs.fetchurl {
+      url = "https://cdn.modrinth.com/data/YrkmSvXh/versions/bPFqoFvZ/TreeFeller-1.33.0.jar";
+      hash = "sha256-eYBTdX4hXZD0qJSQDJbXUrOoSG/2VIItDATMt2BX7uU=";
     };
     PacketEvents = pkgs.fetchurl {
       url = "https://cdn.modrinth.com/data/HYKaKraK/versions/m78nFxYg/packetevents-spigot-2.14.0.jar";
@@ -44,8 +44,8 @@ let
       hash = "sha256-qFtKNw+Yh0HJo49NBJgmLtrL8yIDFHkKwcEnRhmWNZw=";
     };
     HuskHomes = pkgs.fetchurl {
-      url = "https://cdn.modrinth.com/data/J6U9o3JG/versions/eXHdkjXf/HuskHomes-Paper-4.11-9ed80cc.jar";
-      hash = "sha256-hlkURf/8JFM7w+dt5d8Bzd5QARyA2IpF0Os/4SPWF6s=";
+      url = "https://cdn.modrinth.com/data/J6U9o3JG/versions/nrcTSb5B/HuskHomes-Paper-4.11-a68a951.jar";
+      hash = "sha256-+wtDiDaZrveJEvfmVp/TR6sC6stTimToAFayzzyrgpk=";
     };
     Chunky = pkgs.fetchurl {
       url = "https://cdn.modrinth.com/data/fALzjamp/versions/MdY6JATr/Chunky-Bukkit-1.5.3.jar";
@@ -56,8 +56,8 @@ let
       hash = "sha256-oqzvfAbvIBNVzvB9WRpgVd/tNYrXaPqqqvTidoZezJc=";
     };
     WorldEdit = pkgs.fetchurl {
-      url = "https://cdn.modrinth.com/data/1u6JkXh5/versions/F5ea2ov3/worldedit-bukkit-7.4.5.jar";
-      hash = "sha256-5WlqbQZLmWlDeoiIvpGwlBFIoo4MNzbeFVSgAlSl0UI=";
+      url = "https://cdn.modrinth.com/data/1u6JkXh5/versions/YFnqiUlL/worldedit-bukkit-7.4.6.jar";
+      hash = "sha256-4M5n2HCtH++KQN2deSY2DK87tEciQ4VF1rILVfgqDJE=";
     };
   };
 
