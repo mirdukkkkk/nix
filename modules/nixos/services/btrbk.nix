@@ -5,6 +5,10 @@ let
   snapshots = "/.snapshots";
 in
 {
+  # A missing or broken @snapshots must not drop the boot into emergency
+  # mode; btrbk just fails until it is fixed.
+  fileSystems.${snapshots}.options = [ "nofail" ];
+
   # @persist holds password hashes and host keys, so its snapshots must not
   # be readable through a world-traversable directory.
   systemd.tmpfiles.rules = [

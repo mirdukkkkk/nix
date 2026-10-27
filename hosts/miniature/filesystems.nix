@@ -35,7 +35,8 @@ in
   fileSystems."/var/lib/minecraft" = subvol "@minecraft";
   # btrbk snapshots (see modules/nixos/services/btrbk.nix); the subvolume has
   # to exist before it can be mounted, so on a fresh disk create it once with
-  # `btrfs subvolume create` on the top level
+  # `btrfs subvolume create` on the top level. Not with a tmpfiles `v` rule:
+  # with / on tmpfs that silently creates a plain directory instead.
   fileSystems."/.snapshots" = subvol "@snapshots";
 
   fileSystems."/boot" = {
