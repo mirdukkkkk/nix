@@ -2,8 +2,8 @@
 {
   home.packages = with pkgs; [
     bat
-    #ripgrep
-    #fd
+    ripgrep
+    fd
     duf
     dust
     bottom
