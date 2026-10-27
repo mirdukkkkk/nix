@@ -56,8 +56,15 @@ in
   # The module runs btrbk as its own user that escalates through sudo, but
   # sudo-rs.execWheelOnly makes the sudo wrapper executable for wheel only.
   # Local snapshots need root for every btrfs call anyway.
-  systemd.services.btrbk-btrbk.serviceConfig = {
-    User = lib.mkForce "root";
-    Group = lib.mkForce "root";
+  #
+  # The tmpfiles rule alone isn't enough: on a switch, tmpfiles can run before
+  # the new automount for the pool exists, so the service applies it itself.
+  systemd.services.btrbk-btrbk = {
+    unitConfig.RequiresMountsFor = [ pool ];
+    serviceConfig = {
+      User = lib.mkForce "root";
+      Group = lib.mkForce "root";
+      ExecStartPre = "${config.systemd.package}/bin/systemd-tmpfiles --create --prefix=${pool}/@snapshots";
+    };
   };
 }
