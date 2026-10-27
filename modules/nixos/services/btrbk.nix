@@ -1,28 +1,14 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ lib, pkgs, ... }:
 let
-  # Top level of the btrfs filesystem (subvolid=5): snapshots have to live on
-  # the same filesystem as their subvolumes, next to @persist and friends.
-  pool = "/mnt/btrfs";
+  # @snapshots, mounted in filesystems.nix. Snapshots have to live on the same
+  # btrfs filesystem as their sources, which a sibling subvolume satisfies.
+  snapshots = "/.snapshots";
 in
 {
-  fileSystems.${pool} = {
-    inherit (config.fileSystems."/persist") device fsType;
-    options = [
-      "subvolid=5"
-      "noatime"
-      "x-systemd.automount"
-    ];
-  };
-
   # @persist holds password hashes and host keys, so its snapshots must not
   # be readable through a world-traversable directory.
   systemd.tmpfiles.rules = [
-    "v ${pool}/@snapshots 0700 root root -"
+    "z ${snapshots} 0700 root root -"
   ];
 
   services.btrbk = {
@@ -42,12 +28,13 @@ in
         snapshot_preserve_min = "2d";
         snapshot_preserve = "14d";
 
-        volume.${pool} = {
-          snapshot_dir = "@snapshots";
-          subvolume = {
-            "@persist" = { };
-            "@minecraft" = { };
-          };
+        # Mount points instead of a volume section, so the btrfs top level
+        # never has to be mounted. Snapshots are named after the last path
+        # component: persist.<timestamp>, minecraft.<timestamp>.
+        snapshot_dir = snapshots;
+        subvolume = {
+          "/persist" = { };
+          "/var/lib/minecraft" = { };
         };
       };
     };
@@ -56,15 +43,11 @@ in
   # The module runs btrbk as its own user that escalates through sudo, but
   # sudo-rs.execWheelOnly makes the sudo wrapper executable for wheel only.
   # Local snapshots need root for every btrfs call anyway.
-  #
-  # The tmpfiles rule alone isn't enough: on a switch, tmpfiles can run before
-  # the new automount for the pool exists, so the service applies it itself.
   systemd.services.btrbk-btrbk = {
-    unitConfig.RequiresMountsFor = [ pool ];
+    unitConfig.RequiresMountsFor = [ snapshots ];
     serviceConfig = {
       User = lib.mkForce "root";
       Group = lib.mkForce "root";
-      ExecStartPre = "${config.systemd.package}/bin/systemd-tmpfiles --create --prefix=${pool}/@snapshots";
     };
   };
 }

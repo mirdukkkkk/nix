@@ -33,6 +33,10 @@ in
   fileSystems."/var/log" = subvol "@log";
   fileSystems."/var/lib/docker" = subvol "@docker";
   fileSystems."/var/lib/minecraft" = subvol "@minecraft";
+  # btrbk snapshots (see modules/nixos/services/btrbk.nix); the subvolume has
+  # to exist before it can be mounted, so on a fresh disk create it once with
+  # `btrfs subvolume create` on the top level
+  fileSystems."/.snapshots" = subvol "@snapshots";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/E3E7-1149";
