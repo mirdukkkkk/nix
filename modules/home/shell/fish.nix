@@ -16,8 +16,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # Autosuggestions and syntax highlighting are built into fish,
-    # no plugins needed for what oh-my-zsh provided on the zsh side.
+    # Autosuggestions and syntax highlighting are built into fish, no plugins needed.
     programs.fish.enable = true;
 
     # interactiveShellInit (not loginShellInit) so this fires for every
