@@ -76,6 +76,7 @@ in
       "nolock"
       "ac"
       "x-systemd.automount"
+      "x-systemd.mount-timeout=10"
     ];
   };
 }
