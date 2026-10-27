@@ -33,6 +33,8 @@
     "vm.dirty_background_ratio" = 3;
     "vm.dirty_ratio" = 10;
 
-    "kernel.sysrq" = 1;
+    # sync (16) + remount read-only (32) + reboot/poweroff (128): enough for
+    # REISUB, without memory dumps or killing processes from the keyboard
+    "kernel.sysrq" = 176;
   };
 }
