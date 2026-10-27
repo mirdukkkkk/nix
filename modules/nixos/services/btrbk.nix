@@ -1,4 +1,9 @@
-{ config, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   # Top level of the btrfs filesystem (subvolid=5): snapshots have to live on
   # the same filesystem as their subvolumes, next to @persist and friends.
@@ -24,10 +29,13 @@ in
     # snapshots are cheap, but deleting old ones churns metadata; keep that
     # out of the way of games and builds
     ioSchedulingClass = "idle";
+    extraPackages = [ pkgs.btrfs-progs ];
 
     instances.btrbk = {
       onCalendar = "hourly";
       settings = {
+        # call btrfs directly instead of through sudo, see the service below
+        backend = "btrfs-progs";
         # the default (day only) would make hourly snapshots collide
         timestamp_format = "long";
         # every snapshot for 2 days, then one per day for 2 weeks
@@ -43,5 +51,13 @@ in
         };
       };
     };
+  };
+
+  # The module runs btrbk as its own user that escalates through sudo, but
+  # sudo-rs.execWheelOnly makes the sudo wrapper executable for wheel only.
+  # Local snapshots need root for every btrfs call anyway.
+  systemd.services.btrbk-btrbk.serviceConfig = {
+    User = lib.mkForce "root";
+    Group = lib.mkForce "root";
   };
 }
