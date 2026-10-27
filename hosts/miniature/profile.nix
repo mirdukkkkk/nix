@@ -17,6 +17,7 @@
 
     # services
     ../../modules/nixos/services/btrfs.nix
+    ../../modules/nixos/services/btrbk.nix
     ../../modules/nixos/services/flatpak.nix
     ../../modules/nixos/services/fstrim.nix
     ../../modules/nixos/services/fwupd.nix
