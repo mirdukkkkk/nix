@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  lib,
   ...
 }:
 {
@@ -19,8 +18,7 @@
           "input"
           "games"
           "audio"
-        ]
-        ++ lib.optional config.my.services.docker.enable "docker";
+        ];
         shell = if config.my.system.fish.enable then pkgs.fish else pkgs.bashInteractive;
       };
     };

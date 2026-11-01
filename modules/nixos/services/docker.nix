@@ -12,6 +12,8 @@ in
   config = lib.mkIf cfg.enable {
     virtualisation.docker.enable = true;
 
+    users.users.mirdukkkkk.extraGroups = [ "docker" ];
+
     systemd.services.docker.wantedBy = lib.mkIf (!cfg.autoStart) (lib.mkForce [ ]);
   };
 }
