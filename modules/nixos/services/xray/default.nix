@@ -27,14 +27,14 @@ let
       ];
     }).overrideAttrs
       (finalAttrs: {
-        version = "26.10.21";
+        version = "26.10.29";
         src = pkgs.fetchFromGitHub {
           owner = "XTLS";
           repo = "Xray-core";
           rev = "v${finalAttrs.version}";
-          hash = "sha256-1FwcB/qZaH7W9b+GSe+CG/s+uStaDjz792OxDc3uAyg=";
+          hash = "sha256-GqPEAgWM9Wx19uxMj0LGeOyHreLbU0IMSmalwLe/SIc=";
         };
-        vendorHash = "sha256-o4mKfCGgI4r5ZatnA4AsK4zR0/qOl2qpqCmoJmE2jBQ=";
+        vendorHash = "sha256-6Qa05hFdvfLlH8WQd426IU7MScmeevIgrgP5037pNek=";
       });
 
   configPath = "/etc/xray/config.json";
