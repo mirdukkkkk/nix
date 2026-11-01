@@ -56,6 +56,8 @@ in
       "nowatchdog"
       "amd_pstate=active"
       "random.trust_cpu=0"
+      "iommu.passthrough=0"
+      "sysctl.kernel.kexec_load_disabled=1"
       "usbcore.quirks=046d:c53f:g"
     ];
 
@@ -82,6 +84,8 @@ in
       tmpfsSize = "50%";
     };
   };
+
+  security.tpm2.enable = true;
 
   environment.systemPackages = [ pkgs.sbctl ];
 }
