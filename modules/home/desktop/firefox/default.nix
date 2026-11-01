@@ -20,6 +20,7 @@ let
     resourceoverride
     sponsorblock
     ublock-origin
+    violentmonkey
   ];
 in
 {
