@@ -27,14 +27,25 @@ let
       ];
     }).overrideAttrs
       (finalAttrs: {
-        version = "26.10.29";
+        version = "26.10.31";
+
         src = pkgs.fetchFromGitHub {
           owner = "XTLS";
           repo = "Xray-core";
           rev = "v${finalAttrs.version}";
-          hash = "sha256-GqPEAgWM9Wx19uxMj0LGeOyHreLbU0IMSmalwLe/SIc=";
+          hash = "sha256-wTKW8XUP/HXWI7e4jbBw3aGSPpPX7KjkxFwLMb9vxSA=";
         };
-        vendorHash = "sha256-6Qa05hFdvfLlH8WQd426IU7MScmeevIgrgP5037pNek=";
+
+        vendorHash = "sha256-+beH/Cfu3YLo6CmP/vFo0ULQ89NzZ8MFPfTYs+V/Sow=";
+
+        patches = [
+          ./use-system-certs.patch
+        ];
+
+        postPatch = ''
+          sed -i '/golang\.org\/x\/crypto\/x509roots\/fallback/d' go.mod
+          sed -i '/golang\.org\/x\/crypto\/x509roots\/fallback/d' go.sum
+        '';
       });
 
   configPath = "/etc/xray/config.json";
