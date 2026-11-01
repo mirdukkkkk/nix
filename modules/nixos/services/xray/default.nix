@@ -33,14 +33,10 @@ let
           owner = "XTLS";
           repo = "Xray-core";
           rev = "v${finalAttrs.version}";
-          hash = "sha256-wTKW8XUP/HXWI7e4jbBw3aGSPpPX7KjkxFwLMb9vxSA=";
+          hash = "sha256-GqPEAgWM9Wx19uxMj0LGeOyHreLbU0IMSmalwLe/SIc=";
         };
 
-        vendorHash = "sha256-+beH/Cfu3YLo6CmP/vFo0ULQ89NzZ8MFPfTYs+V/Sow=";
-
-        patches = [
-          ./use-system-certs.patch
-        ];
+        vendorHash = "sha256-6Qa05hFdvfLlH8WQd426IU7MScmeevIgrgP5037pNek=";
 
         postPatch = ''
           sed -i '/golang\.org\/x\/crypto\/x509roots\/fallback/d' go.mod
