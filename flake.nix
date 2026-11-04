@@ -7,10 +7,14 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nur = {
-      url = "github:nix-community/nur";
-      inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
+    nur.url = "github:nix-community/nur";
     preservation.url = "github:nix-community/preservation";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     lanzaboote = {
@@ -35,11 +39,12 @@
     {
       self,
       nixpkgs,
+      home-manager,
+      plasma-manager,
       nur,
       preservation,
       nix-flatpak,
       lanzaboote,
-      home-manager,
       ...
     }@inputs:
     {
@@ -62,6 +67,10 @@
               backupFileExtension = "bak";
 
               extraSpecialArgs = { inherit inputs self; };
+
+              sharedModules = [
+                plasma-manager.homeModules.plasma-manager
+              ];
 
               users.mirdukkkkk = import ./home/mirdukkkkk;
             };
