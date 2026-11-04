@@ -1,11 +1,14 @@
+{ pkgs, ... }:
 {
   imports = [
     ./fonts.nix
     ./input.nix
-    ./panels.nix
+    #./panels.nix
     ./powerdevil.nix
     ./rules.nix
   ];
+
+  home.packages = [ pkgs.plasma-panel-colorizer ];
 
   programs.plasma = {
     enable = true;
@@ -13,6 +16,7 @@
     workspace = {
       tooltipDelay = 300;
       enableMiddleClickPaste = false;
+
       iconTheme = "Papirus";
       cursor = {
         theme = "leafSimple";
