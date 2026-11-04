@@ -20,7 +20,7 @@ in
   fileSystems."/" = {
     fsType = "tmpfs";
     options = [
-      "size=4G"
+      "size=1G"
       "mode=755"
     ];
   };
@@ -76,7 +76,7 @@ in
     options = [
       "_netdev"
       "rw"
-      "hard"
+      "soft"
       "vers=3"
       "nolock"
       "ac"
