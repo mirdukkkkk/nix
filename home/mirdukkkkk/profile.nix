@@ -17,6 +17,7 @@
     ../../modules/home/cli/tools.nix
 
     # dev
+    ../../modules/home/dev/binutils.nix
     ../../modules/home/dev/databases.nix
     ../../modules/home/dev/go.nix
     ../../modules/home/dev/javascript.nix
@@ -32,6 +33,7 @@
     ../../modules/home/desktop/graphics.nix
     ../../modules/home/desktop/kitty.nix
     ../../modules/home/desktop/obs.nix
+    ../../modules/home/desktop/plasma
     ../../modules/home/desktop/qbittorrent.nix
     ../../modules/home/desktop/spotify.nix
     ../../modules/home/desktop/telegram.nix
