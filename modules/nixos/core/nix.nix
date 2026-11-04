@@ -5,7 +5,7 @@
       # one build per thread that each grabbed all of them, starving the desktop.
       max-jobs = 2;
       cores = 8;
-      auto-optimise-store = true;
+      auto-optimise-store = false;
       experimental-features = [
         "nix-command"
         "flakes"
@@ -31,9 +31,9 @@
     daemonIOSchedClass = "idle";
 
     optimise = {
-      automatic = false;
+      automatic = true;
       persistent = true;
-      dates = "daily";
+      dates = "weekly";
     };
   };
 
