@@ -18,6 +18,7 @@
 
     # dev
     ../../modules/home/dev/binutils.nix
+    ../../modules/home/dev/cpp.nix
     ../../modules/home/dev/databases.nix
     ../../modules/home/dev/go.nix
     ../../modules/home/dev/javascript.nix
