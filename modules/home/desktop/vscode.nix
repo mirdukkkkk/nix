@@ -11,6 +11,7 @@
         esbenp.prettier-vscode
         github.github-vscode-theme
         leonardssh.vscord
+        mkhl.direnv
         ms-vscode.makefile-tools
         oderwat.indent-rainbow
       ];
