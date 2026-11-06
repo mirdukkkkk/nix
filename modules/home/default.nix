@@ -7,5 +7,6 @@
 
     ./gaming.nix
     ./identity.nix
+    ./security-keys.nix
   ];
 }
