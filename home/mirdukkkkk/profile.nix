@@ -24,6 +24,7 @@
     ../../modules/home/dev/javascript.nix
     ../../modules/home/dev/protobuf.nix
     ../../modules/home/dev/python.nix
+    ../../modules/home/dev/rust.nix
 
     # desktop
     ../../modules/home/desktop/chromium.nix
