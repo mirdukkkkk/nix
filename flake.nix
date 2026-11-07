@@ -16,7 +16,6 @@
     };
     nur.url = "github:nix-community/nur";
     preservation.url = "github:nix-community/preservation";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.2.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,7 +42,6 @@
       plasma-manager,
       nur,
       preservation,
-      nix-flatpak,
       lanzaboote,
       ...
     }@inputs:
@@ -57,7 +55,6 @@
           ./hosts/miniature
           nur.modules.nixos.default
           preservation.nixosModules.preservation
-          nix-flatpak.nixosModules.nix-flatpak
           lanzaboote.nixosModules.lanzaboote
           home-manager.nixosModules.home-manager
           {

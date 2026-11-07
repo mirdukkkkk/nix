@@ -13,6 +13,7 @@
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     aurorae
+    flatpak-kcm
     spectacle
     konsole
     kwin-x11

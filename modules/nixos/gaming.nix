@@ -16,10 +16,6 @@
 
   boot.kernelModules = [ "ntsync" ];
 
-  services.flatpak.packages = [
-    "ru.linux_gaming.PortProton"
-  ];
-
   environment.systemPackages = with pkgs; [
     (prismlauncher.override {
       additionalPrograms = with pkgs; [ ffmpeg ];
