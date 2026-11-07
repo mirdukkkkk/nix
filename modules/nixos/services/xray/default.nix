@@ -10,39 +10,18 @@ let
   };
 
   roscomvpn-assets = pkgs.runCommand "roscomvpn-assets" { } ''
-    mkdir -p $out/share/v2ray
+    mkdir -p $out/share/xray
 
-    cp ${roscomvpn-geoip} $out/share/v2ray/geoip.ru.dat
-    cp ${roscomvpn-geosite} $out/share/v2ray/geosite.ru.dat
+    cp ${roscomvpn-geoip} $out/share/xray/geoip.ru.dat
+    cp ${roscomvpn-geosite} $out/share/xray/geosite.ru.dat
   '';
 
-  # Pinned newer than nixpkgs. `assets` goes through `override` (it is a
-  # callPackage argument), the version bump through `overrideAttrs`.
-  xray =
-    (pkgs.unstable.xray.override {
-      assets = [
-        pkgs.unstable.v2ray-geoip
-        pkgs.unstable.v2ray-domain-list-community
-        roscomvpn-assets
-      ];
-    }).overrideAttrs
-      (finalAttrs: {
-        version = "26.10.31";
-
-        src = pkgs.fetchFromGitHub {
-          owner = "XTLS";
-          repo = "Xray-core";
-          rev = "v${finalAttrs.version}";
-          hash = "sha256-GqPEAgWM9Wx19uxMj0LGeOyHreLbU0IMSmalwLe/SIc=";
-        };
-
-        vendorHash = "sha256-6Qa05hFdvfLlH8WQd426IU7MScmeevIgrgP5037pNek=";
-
-        postPatch = ''
-          sed -i '/golang\.org\/x\/crypto\/x509roots\/fallback/d' go.mod
-          sed -i '/golang\.org\/x\/crypto\/x509roots\/fallback/d' go.sum
-        '';
-      });
+  xray = pkgs.unstable.xray.override {
+    assets = [
+      pkgs.unstable.xray-rules-dat
+      roscomvpn-assets
+    ];
+  };
 
   configPath = "/etc/xray/config.json";
 in
