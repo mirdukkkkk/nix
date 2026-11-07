@@ -21,8 +21,8 @@
     userSettings."[python]" = {
       "editor.defaultFormatter" = "charliermarsh.ruff";
       "editor.codeActionsOnSave" = {
-        "source.organizeImports" = true;
-        "source.fixAll" = true;
+        "source.organizeImports" = "always";
+        "source.fixAll" = "explicit";
       };
     };
   };
