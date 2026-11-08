@@ -9,18 +9,20 @@ let
     hash = "sha256-jHnwCGVVw5MqdhdFsVh1RKF5vxy6cONxpyAUTN2j1Jo=";
   };
 
-  roscomvpn-assets = pkgs.runCommand "roscomvpn-assets" { } ''
+  # nixpkgs xray reads assets from share/xray, while the v2fly packages
+  # install into share/v2ray, so everything is copied into one place here.
+  xray-assets = pkgs.runCommand "xray-geo-assets" { } ''
     mkdir -p $out/share/xray
+
+    cp ${pkgs.unstable.v2ray-geoip}/share/v2ray/{geoip,private}.dat $out/share/xray/
+    cp ${pkgs.unstable.v2ray-domain-list-community}/share/v2ray/geosite.dat $out/share/xray/
 
     cp ${roscomvpn-geoip} $out/share/xray/geoip.ru.dat
     cp ${roscomvpn-geosite} $out/share/xray/geosite.ru.dat
   '';
 
   xray = pkgs.unstable.xray.override {
-    assets = [
-      pkgs.unstable.xray-rules-dat
-      roscomvpn-assets
-    ];
+    assets = [ xray-assets ];
   };
 
   configPath = "/etc/xray/config.json";
