@@ -21,6 +21,16 @@
               [ "wrapGApp $out/bin/mongodb-compass" ]
               old.buildCommand;
         });
+        # VS Code >= 1.122 ships ripgrep under @vscode/ripgrep-universal, but
+        # release-26.05 still patches the old path. Drop once
+        # https://github.com/NixOS/nixpkgs/issues/584492 is fixed on 26.05.
+        vscode = prev.vscode.overrideAttrs (old: {
+          postPatch =
+            builtins.replaceStrings
+              [ "resources/app/node_modules/@vscode/ripgrep/bin/rg" ]
+              [ "resources/app/node_modules/@vscode/ripgrep-universal/bin/linux-x64/rg" ]
+              old.postPatch;
+        });
       })
     ];
   };
