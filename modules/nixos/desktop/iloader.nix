@@ -1,7 +1,11 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs.unstable; [
-    iloader
+    # Fixes the build with system aws-lc. Drop once
+    # https://github.com/NixOS/nixpkgs/pull/585227 reaches nixpkgs-unstable.
+    (iloader.overrideAttrs (old: {
+      buildInputs = (old.buildInputs or [ ]) ++ [ aws-lc ];
+    }))
   ];
 
   services.usbmuxd = {
