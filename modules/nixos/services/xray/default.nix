@@ -9,16 +9,16 @@ let
     hash = "sha256-jHnwCGVVw5MqdhdFsVh1RKF5vxy6cONxpyAUTN2j1Jo=";
   };
 
-  # nixpkgs xray reads assets from share/xray, while the v2fly packages
-  # install into share/v2ray, so everything is copied into one place here.
+  # The nixpkgs xray wrapper reads assets only from share/v2ray, so everything
+  # has to be installed there.
   xray-assets = pkgs.runCommand "xray-geo-assets" { } ''
-    mkdir -p $out/share/xray
+    mkdir -p $out/share/v2ray
 
-    cp ${pkgs.unstable.v2ray-geoip}/share/v2ray/{geoip,private}.dat $out/share/xray/
-    cp ${pkgs.unstable.v2ray-domain-list-community}/share/v2ray/geosite.dat $out/share/xray/
+    cp ${pkgs.unstable.v2ray-geoip}/share/v2ray/{geoip,private}.dat $out/share/v2ray/
+    cp ${pkgs.unstable.v2ray-domain-list-community}/share/v2ray/geosite.dat $out/share/v2ray/
 
-    cp ${roscomvpn-geoip} $out/share/xray/geoip.ru.dat
-    cp ${roscomvpn-geosite} $out/share/xray/geosite.ru.dat
+    cp ${roscomvpn-geoip} $out/share/v2ray/geoip.ru.dat
+    cp ${roscomvpn-geosite} $out/share/v2ray/geosite.ru.dat
   '';
 
   xray = pkgs.unstable.xray.override {
