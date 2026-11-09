@@ -20,6 +20,7 @@
 
   programs.gh = {
     enable = true;
+    extensions = [ pkgs.unstable.gh-stack ];
     settings = {
       git_protocol = "https";
       aliases.co = "pr checkout";
