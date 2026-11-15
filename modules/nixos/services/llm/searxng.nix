@@ -1,7 +1,10 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   services.searx = {
     enable = true;
+    # Scrapers break as sites change; 26.05's snapshot (2026-05) has no
+    # working Google engine, unstable ships `google cse`.
+    package = pkgs.unstable.searxng;
     # SEARX_SECRET_KEY=...; generate with `openssl rand -hex 32`.
     environmentFile = "/persist/.secrets/searx.env";
     settings = {
@@ -19,14 +22,32 @@
       # Route every engine request through the local xray SOCKS inbound;
       # socks5h resolves DNS on the proxy side too.
       outgoing.proxies."all://" = [ "socks5h://127.0.0.1:1080" ];
-      # Through the proxy exit IP DuckDuckGo/Startpage/Brave/Google answer
-      # with CAPTCHA or 403; Bing (disabled upstream by default) still works.
-      engines = [
-        {
-          name = "bing";
-          disabled = false;
-        }
-      ];
+      # Tested 2026-11 both via the proxy and directly: `google cse` gives
+      # relevant results in any language. Bing answers Cyrillic queries with
+      # random pages and geolocates to the proxy exit, so it stays off; the
+      # rest return CAPTCHA/403 or fail to parse and only add timeouts.
+      engines =
+        map
+          (name: {
+            inherit name;
+            disabled = true;
+          })
+          [
+            "bing"
+            "brave"
+            "duckduckgo"
+            "google"
+            "mojeek"
+            "qwant"
+            "startpage"
+            "yandex"
+          ]
+        ++ [
+          {
+            name = "google cse";
+            disabled = false;
+          }
+        ];
     };
   };
 
@@ -35,5 +56,8 @@
     partOf = [ "llama-cpp.service" ];
     wants = [ "xray.service" ];
     after = [ "xray.service" ];
+    # searxng keeps sqlite caches in $TMPDIR under fixed names; a private
+    # /tmp keeps other searxng processes from owning those files.
+    serviceConfig.PrivateTmp = true;
   };
 }
