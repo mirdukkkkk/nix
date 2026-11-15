@@ -4,8 +4,13 @@ import os
 
 import httpx
 from mcp.server.fastmcp import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 
 SEARXNG_URL = os.environ.get("SEARXNG_URL", "http://127.0.0.1:8888")
+
+# Extra browser origins allowed through DNS-rebinding protection, e.g. the
+# llama.cpp web UI opened from another device and proxied via /cors-proxy.
+EXTRA_ORIGINS = os.environ.get("MCP_ALLOWED_ORIGINS", "").split()
 
 mcp = FastMCP(
     "searxng",
@@ -13,6 +18,16 @@ mcp = FastMCP(
     port=int(os.environ.get("MCP_PORT", "8889")),
     stateless_http=True,
     json_response=True,
+    transport_security=TransportSecuritySettings(
+        enable_dns_rebinding_protection=True,
+        allowed_hosts=["127.0.0.1:*", "localhost:*", "[::1]:*"],
+        allowed_origins=[
+            "http://127.0.0.1:*",
+            "http://localhost:*",
+            "http://[::1]:*",
+            *EXTRA_ORIGINS,
+        ],
+    ),
 )
 
 

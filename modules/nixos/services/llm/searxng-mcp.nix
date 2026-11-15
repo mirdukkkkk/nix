@@ -10,6 +10,9 @@
       SEARXNG_URL = "http://127.0.0.1:8888";
       MCP_HOST = "127.0.0.1";
       MCP_PORT = "8889";
+      # The web UI opened from the phone; its Origin is forwarded by
+      # llama-server's /cors-proxy.
+      MCP_ALLOWED_ORIGINS = "http://192.168.1.100:8080";
     };
     serviceConfig = {
       ExecStart = lib.getExe pkgs.searxng-mcp;
